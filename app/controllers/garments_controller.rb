@@ -50,34 +50,34 @@ class GarmentsController < ApplicationController
   def process_image_and_generate_description(garment)
     return unless garment.photo.attached?
 
-    image_url = cl_image_path(garment.photo.key)
+    image_url = "https://res.cloudinary.com/dyahhsgzn/image/upload/v1/development/#{garment.photo.key}?_a=BACE6GBn"
+    p image_url
     description = describe_image(image_url)
     garment.update(ai_description: description)
   end
 
   def describe_image(image_url)
-    # Convert the image to a binary string
-    image_data = download_image(image_url)
-    # Call the OpenAI API (Assuming you have the OpenAI client configured in an initializer)
     client = OpenAI::Client.new
+
+    messages = [
+      { type: "text", text: "Please describe the clothes in this image in detail ignoring any other items. Suggest other clothes that would match the pictured clothes:" },
+      { type: "image_url",
+        image_url: {
+          url: image_url
+        }
+      }
+    ]
+
     response = client.chat(
-      model: "gpt-4-vision",  # Ensure you're using the GPT-4V model
-      messages: [
-        { role: "system", content: "Describe the following image." },
-        { role: "user", content: "Please describe this image.", image: image_data }
-      ]
+      parameters: {
+        model: "gpt-4o",
+        messages: [
+          { role: "user", content: messages }
+        ]
+      }
     )
 
     # Extract the description from the response
     response["choices"].first["message"]["content"]
-  end
-
-  def download_image(url)
-    # Download the image from the provided URL and return binary data
-    URI.open(url).read
-    # PREVIOUS CODE
-      # uri = URI.parse(url)
-      # response = Net::HTTP.get_response(uri)
-      # response.body if response.is_a?(Net::HTTPSuccess)
   end
 end
