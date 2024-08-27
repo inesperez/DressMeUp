@@ -1,5 +1,7 @@
 <div class= "container">
 <% @garments.each do |garment| %>
-<%=image_tag garment.image_url %>
+  <%= link_to garment_path(garment) do %>
+    <%=image_tag garment.image_url %>
   <% end %>
+<% end %>
 </div>
