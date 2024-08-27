@@ -15,4 +15,9 @@ class GarmentsController < ApplicationController
       redirect_to garment_path(@garment)
     end
   end
+
+  def index
+    @garments = Garment.all
+  end
+
 end
