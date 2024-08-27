@@ -1,19 +1,24 @@
-class GarmentsController < ApplicationController
+require 'open-uri'
 
-  def show
-    @garment = Garment.find(params[:id])
+class GarmentsController < ApplicationController
+  def new
+    @garment = Garment.new
   end
 
   def create
+    @user = current_user
     @garment = Garment.new(garment_params)
-    ## The AI Bit
+    @garment.user = @user
     if @garment.save
-      # Generate AI description if an image is uploaded
       process_image_and_generate_description(@garment)
       redirect_to garment_path(@garment), notice: 'Garment was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @garment = Garment.find(params[:id])
   end
 
   def edit
@@ -28,13 +33,8 @@ class GarmentsController < ApplicationController
       process_image_and_generate_description(@garment)
       redirect_to garment_path(@garment), notice: 'Garment was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
-    # PREVIOUS CODE IN THIS ACTION
-      # @garment = Garment.update(garment_params)
-      # if @garment.save
-      #   redirect_to garment_path(@garment)
-      # end
   end
 
   def index
@@ -44,14 +44,15 @@ class GarmentsController < ApplicationController
   private
 
   def garment_params
-    params.require(:garment).permit(:image_url) # Ensure image is permitted
+    params.require(:garment).permit(:ai_description, :photo)
   end
 
   def process_image_and_generate_description(garment)
-    if garment.image_url.present?
-      description = describe_image(garment.image_url.url)
-      garment.update(ai_description: description)
-    end
+    return unless garment.photo.attached?
+
+    image_url = cl_image_path(garment.photo.key)
+    description = describe_image(image_url)
+    garment.update(ai_description: description)
   end
 
   def describe_image(image_url)
@@ -73,7 +74,6 @@ class GarmentsController < ApplicationController
 
   def download_image(url)
     # Download the image from the provided URL and return binary data
-    require 'open-uri'
     URI.open(url).read
     # PREVIOUS CODE
       # uri = URI.parse(url)
