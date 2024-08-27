@@ -13,7 +13,7 @@ class GarmentsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
     @garment = Garment.find(params[:id])
   end
@@ -33,12 +33,10 @@ class GarmentsController < ApplicationController
   def index
     @garments = Garment.all
   end
-  
+
   private
 
   def garment_params
-    params.require(:garment).permit(:text) #need to add photo
+    params.require(:garment).permit(:ai_description, :photo) #need to add photo
   end
 end
-
-
