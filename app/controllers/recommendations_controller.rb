@@ -9,7 +9,19 @@ class RecommendationsController < ApplicationController
       messages: [
         {
           role: "user",
-          content: "Below are descriptions of my clothes and their garment IDs. Match my clothes together based on their descriptions to create potential outfits that combine 2 garments, a top and a bottom. Rank them from the best-looking to the worst-looking outfits. Output the ranked outfits only as a combination of garment IDs with the best match first and the worst match last. Output should be JSON called 'matches' which contains only the matched IDs in an array #{@garments}"
+          content:
+          "Below are descriptions of my clothes and their garment IDs.
+
+          Match my clothes together based on their descriptions to create potential outfits that combine 2 garments,
+          a top and a bottom. Rank them from the best-looking to the worst-looking outfits. Output the ranked outfits
+          **only** as a combination of garment IDs in **JSON format** called 'matches' which contains **only**
+          the matched IDs in an array #{@garments}
+
+          The output **must** follow this exact format:
+            { \"matches\": [ [top1, bottom1], [top2, bottom2], [top3, bottom3], ... ] }
+
+          Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format. Do not include any other text, explanations,
+          or descriptions—just the JSON object."
         }
       ]
     })
