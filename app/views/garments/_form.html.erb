@@ -1,7 +1,7 @@
 <div data-controller="camera" data-camera-edit-value="<%= @garment.persisted? %>">
   <%= simple_form_for @garment do |f| %>
     <div>
-      <%= f.input :ai_description, placeholder: 'AI Description' %>
+      <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
       <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} }  %>
     </div>
 
