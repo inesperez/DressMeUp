@@ -1,4 +1,9 @@
 Geocoder.configure(
+
+    lookup: :mapbox,
+    api_key: ENV['MAPBOX_ACCESS_TOKEN'],
+    units: :mi
+
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
@@ -16,7 +21,7 @@ Geocoder.configure(
   # always_raise: [],
 
   # Calculation options
-  units: :mi,                 # :km for kilometers or :mi for miles
+  # units: :mi,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
 
   # Cache configuration
