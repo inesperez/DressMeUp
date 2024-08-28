@@ -1,10 +1,16 @@
 .all-index-images{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  width: 100vw; /* Full viewport width */
+  height: auto;
 }
 
 .image-index {
+  max-width: 100%; /* Make sure images don't overflow their container */
+  width: 100%; /* Set images to fill the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -13,10 +19,12 @@
   border-radius: 16px;
   transition: opacity .3s ease;
   height: 100%;
-  width: 170px;
+  width: 100%;
 }
 
 .image-wrapper {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
