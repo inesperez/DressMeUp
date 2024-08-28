@@ -1,5 +1,5 @@
 <div class= "container my-2">
-<div class= "all-index-images">
+<div class= "all-index-images row">
   <% @garments.each do |garment| %>
     <%= link_to garment_path(garment), class: 'col-6 image-wrapper' do %>
         <% if garment.photo.attached? %>
