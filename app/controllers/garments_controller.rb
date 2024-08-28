@@ -24,8 +24,7 @@ class GarmentsController < ApplicationController
 
   def update
     @garment = Garment.find(params[:id])
-    @garment = Garment.update(garment_params)
-    if @garment.save
+    if @garment.update(garment_params)
       redirect_to garment_path(@garment)
     end
   end

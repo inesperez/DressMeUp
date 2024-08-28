@@ -1,10 +1,9 @@
-<div class= "container my-2">
+<div class= "container">
 <div class= "all-index-images">
   <% @garments.each do |garment| %>
     <%= link_to garment_path(garment), class: 'image-wrapper' do %>
         <%=image_tag garment.image_url, class: 'col-6 image-index' %>
     <% end %>
   <% end %>
-<% end %>
 </div>
 </div>
