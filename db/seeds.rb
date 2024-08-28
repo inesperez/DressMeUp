@@ -2,6 +2,7 @@ require 'faker'
 
 Garment.destroy_all
 User.destroy_all
+
 IMAGES = [
   # tops
   "https://communityclothing.co.uk/cdn/shop/files/220421CommunityClothing175768_Portrait_12c00a3a-1b81-44ef-adfe-452c54e677b8_2048x.jpg?v=1694641971",
@@ -22,11 +23,10 @@ IMAGES = [
   "https://cdn.thewirecutter.com/wp-content/media/2023/10/womensjeans-2048px-04346.jpg?auto=webp&quality=75&width=1024"
 ]
 
-
-
 ines = User.create!(
   email: "ines@ines.com",
-  password: "123456")
+  password: "123456"
+)
 
 10.times do
   garment = Garment.new(

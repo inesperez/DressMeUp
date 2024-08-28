@@ -1,10 +1,14 @@
-<div data-controller="camera">
+<div data-controller="camera" data-camera-edit-value="<%= @garment.persisted? %>">
   <%= simple_form_for @garment do |f| %>
     <div>
-      <%= f.input :ai_description, placeholder: 'AI Description' %>
+      <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
       <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} }  %>
     </div>
 
+    <% if @garment.photo.attached? %>
+    <p>Existing:</p>
+      <%= cl_image_tag @garment.photo.key, class: ''%>
+    <% end %>
 
     <div class="camera-container ">
       <canvas id="canvas" data-camera-target="canvas"></canvas>
