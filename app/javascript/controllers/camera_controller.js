@@ -2,9 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="camera"
 export default class extends Controller {
+  static values = {
+    edit: Boolean
+  }
+
   static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input"];
 
   connect() {
+    console.log(this.editValue);
+
     this.width = 320;    // We will scale the photo width to this
     this.height = 0;     // This will be computed based on the input stream
 
