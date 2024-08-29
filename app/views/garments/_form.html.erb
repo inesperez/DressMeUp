@@ -1,16 +1,21 @@
-<div data-controller="camera" data-camera-edit-value="<%= @garment.persisted? %>">
-  <%= simple_form_for @garment do |f| %>
-    <div>
-      <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-      <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} }  %>
-    </div>
+<div data-controller="camera" data-camera-edit-value="<%= garment.persisted? %>" class="form-upload">
+  <%= link_to "Upload a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#fireUpload", camera_target: "uploadButton"} %>
+  <%= link_to "Take a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#fireCamera", camera_target: "cameraButton"} %>
 
-    <% if @garment.photo.attached? %>
-    <p>Existing:</p>
-      <%= cl_image_tag @garment.photo.key, class: ''%>
+  <div data-camera-target="upload" class="d-none">
+    <%= simple_form_for garment do |f| %>
+      <div>
+        <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
+        <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} } %>
+      </div>
+      <% if garment.photo.attached? %>
+      <p>Existing:</p>
+        <%= cl_image_tag garment.photo.key, class: ''%>
     <% end %>
+  </div>
 
-    <div class="camera-container ">
+
+    <div class="camera-container d-none" data-camera-target="cameraContainer">
       <canvas id="canvas" data-camera-target="canvas"></canvas>
       <div class="output">
         <img id="photo" alt="The screen capture will appear in this box."
@@ -26,6 +31,6 @@
       <button class="d-none" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
     </div>
 
-    <%= f.button :submit, "Add garment", class: "btn btn-primary" %>
+    <%= f.button :submit, "Add to my wardrobe", class: "btn btn-primary d-none", data: {camera_target: "addGarment"}%>
   <% end %>
 </div>
