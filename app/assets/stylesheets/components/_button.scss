@@ -1,10 +1,15 @@
-.btn-secondary {
-  background-color: white !important;
-  color: #347D56 !important;
-  border: 2px solid #347D56 !important;
-  font-weight: 600 !important;
+.secondary {
+  background-color: white ;
+  color: #347D56 ;
+  border: 2px solid #347D56 ;
+  font-weight: 600;
 }
 
 .btn {
   border-radius: 16px !important;
+}
+
+.primary {
+  background-color: #347D56;
+  color: white
 }
