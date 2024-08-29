@@ -57,9 +57,9 @@ class RecommendationsController < ApplicationController
       ]
     })
 
-    @response_json = chatgpt_response["choices"][0]["message"]["content"]
-    # recommendation_ids = JSON.parse(response_json)["matches"]
-    # @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
+    response_json = chatgpt_response["choices"][0]["message"]["content"]
+    recommendation_ids = JSON.parse(response_json)["matches"]
+    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
 
     # @recommendations = Recommendation.all
     # ranked_outfits[0][:matching]%>
