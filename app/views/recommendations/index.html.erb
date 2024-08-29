@@ -3,7 +3,7 @@
 <% @recommendations.each do |recommendation| %>
   <div class="d-flex">
     <p>Recommendation</p>
-    <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
-    <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
+      <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
+      <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
   </div>
 <% end %>

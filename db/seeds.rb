@@ -27,7 +27,8 @@ IMAGES = [
 
 ines = User.create!(
   email: "ines@ines.com",
-  password: "123456"
+  password: "123456",
+  location: "London, UK"
 )
 
 10.times do
