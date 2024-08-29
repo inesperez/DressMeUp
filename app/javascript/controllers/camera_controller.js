@@ -34,7 +34,7 @@ export default class extends Controller {
     event.preventDefault();
     this.uploadButtonTarget.classList.add("d-none");
     this.uploadTarget.classList.remove("d-none");
-    this.cameraButtonTarget.classList.toggle("btn-primary");
+    this.cameraButtonTarget.classList.toggle("primary");
     this.cameraButtonTarget.classList.toggle("btn-link");
     this.cameraButtonTarget.innerText = "Take photo instead";
   }
