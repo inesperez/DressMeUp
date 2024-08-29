@@ -31,10 +31,10 @@ ines = User.create!(
   location: "London, UK"
 )
 
-10.times do
+5.times do
+  sleep 5
   image = URI.open(IMAGES.sample)
   garment = Garment.new(
-    ai_description: Faker::Marketing.buzzwords,
     user: ines
   )
   garment.photo.attach(io: image, filename: "image.png", content_type: "image/png")
