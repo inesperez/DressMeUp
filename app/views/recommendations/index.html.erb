@@ -1,15 +1,9 @@
 <h2> Recommendations </h2>
 
-<p>
-  <%# <%= @garments %>
-  <br><br>
-  <br><br>
-  <%= @content %>
-</p>
-
-
-<%# <% @recommendations.each do |recommendation| %>
-  <%# <div class="recommendation"> %>
-    <%# <h3><%= recommendation.title %></h3>
-  <%# </div> %>
-<%# <% end %>
+<% @recommendations.each do |recommendation| %>
+  <div class="d-flex">
+    <p>Recommendation</p>
+    <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
+    <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
+  </div>
+<% end %>
