@@ -1,0 +1,38 @@
+<h1>Your Preferences</h1>
+<h4>Please select your choices</h4>
+<%= form_with url: recommendations_path, method: :get, local: true do |form| %>
+   <div class="field" data-controller = "preferences">
+      <%# <%= form.label :location, "What's your location?" %>
+        <%# <div> %>
+        <%# <%= form.text_field :location %>
+        <%# </div>  %>
+      <%= form.label :occasion, "What's the occasion?" %>
+        <div class="d-flex">
+          <div>
+             <div>
+              <%= form.select :occasion, options_for_select(
+                 [["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other", "other"]],
+                 params[:occasion]
+              ),
+                input_html:  { data: { preferences_target: "occasion", action: "change->preferences#fire" } }
+              %>
+            </div>
+          </div>
+          </div>
+      <div data-preferences-target="customOccasion" class="d-none">
+        <%= form.label :custom_occasion, "Specification or other occasion?" %>
+        <div>
+        <%= form.text_field :custom_occasion, placeholder: "" %>
+        </div>
+      </div>
+  <div class="How are you feeling today?">
+    <%= form.label :feeling %>
+    <div>
+    <%= form.text_field :feeling, placeholder: "Happy, sad, colorful" %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit "Get Recommendations" %>
+  </div>
+  </div>
+<% end %>
