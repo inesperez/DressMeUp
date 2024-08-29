@@ -14,6 +14,7 @@ class ProcessImageDescriptionJob < ApplicationJob
 
     messages = [
       { type: "text",
+        temperature: 0.2,
         text: "
 
     Role
@@ -34,13 +35,12 @@ class ProcessImageDescriptionJob < ApplicationJob
       - **Output must clearly state that the garment is either a 'top' or 'bottom'.**
       - Do not include any other descriptions at this stage.
       - Ensure each output follows this format:
-      { \"garment_type\": \"top\" or \"bottom\", \"description\": \"[detailed description including color, textile, pattern, occasion, and weather]\" }
+        garment_type: top or bottom
+        garment_description: [long detailed description including color, style, textile, pattern, occasion, and weather}
 
-    **Example Output**:
-    {
-      \"garment_type\": \"top\",
-      \"description\": \"Red cotton shirt with a striped pattern, suitable for casual occasions and warm weather.\"
-    }
+    Example Output
+      garment_type: top
+      garment_description: Red cotton shirt with a striped pattern, suitable for casual occasions and warm weather
 
     Check your identification and description to ensure that each garment is clearly categorized **only as a 'top' or 'bottom'**
     before adding any further description. Do not mix up the categories." },

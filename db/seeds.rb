@@ -32,7 +32,7 @@ ines = User.create!(
 )
 
 5.times do
-  sleep 5
+  sleep 15
   image = URI.open(IMAGES.sample)
   garment = Garment.new(
     user: ines
