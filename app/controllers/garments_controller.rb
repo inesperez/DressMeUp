@@ -60,7 +60,31 @@ class GarmentsController < ApplicationController
     client = OpenAI::Client.new
 
     messages = [
-      { type: "text", text: "Please describe the clothes in this image in detail ignoring any other items. Suggest other clothes that would match the pictured clothes:" },
+      { type: "text", text: "Focus on the main garment (the most visible garment) in each image. Ignore any other items
+        or elements in the image.
+
+1. Identify the garment type:
+   - Determine if the garment is a **top** (upper body garment) or **bottom** (lower body garment).
+   - **Output must state clearly and exclusively either 'top' or 'bottom'.**
+   Do not include any other descriptions at this stage.
+
+2. Describe the identified garment:
+   - Once you have identified the garment as either a 'top' or 'bottom', add a description including its color, textile,
+    pattern, occasion suitability, and appropriate weather conditions.
+
+Ensure each output follows this format:
+  { \"garment_type\": \"top\" or \"bottom\", \"description\": \"[detailed description including color, textile, pattern, occasion, and weather]\" }
+
+**Example Output**:
+{
+  \"garment_type\": \"top\",
+  \"description\": \"Red cotton shirt with a striped pattern, suitable for casual occasions and warm weather.\"
+}
+
+Check your identification and description to ensure that each garment is clearly categorized **only as a 'top' or 'bottom'**
+before adding any further description. Do not mix up the categories." },
+
+
       { type: "image_url",
         image_url: {
           url: image_url

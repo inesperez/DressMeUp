@@ -1,6 +1,6 @@
 <div data-controller="camera" data-camera-edit-value="<%= garment.persisted? %>" class="form-upload">
-  <%= link_to "Upload a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#fireUpload", camera_target: "uploadButton"} %>
-  <%= link_to "Take a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#fireCamera", camera_target: "cameraButton"} %>
+  <%= link_to "Upload a photo", "#", :class => "btn primary", data: {action: "click->camera#fireUpload", camera_target: "uploadButton"} %>
+  <%= link_to "Take a photo", "#", :class => "btn primary", data: {action: "click->camera#fireCamera", camera_target: "cameraButton"} %>
 
   <div data-camera-target="upload" class="d-none">
     <%= simple_form_for garment do |f| %>
@@ -31,6 +31,6 @@
       <button class="d-none" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
     </div>
 
-    <%= f.button :submit, "Add to my wardrobe", class: "btn btn-primary d-none", data: {camera_target: "addGarment"}%>
+    <%= f.button :submit, "Add to my wardrobe", class: "btn primary d-none", data: {camera_target: "addGarment"}%>
   <% end %>
 </div>

@@ -12,7 +12,7 @@ export default class extends Controller {
 
     console.log(event)
     const selectedValue = this.occasionTarget.value;
-    if (selectedValue === "Other") {
+    if (selectedValue === "Other (please specify)") {
       this.customOccasionTarget.classList.remove("d-none");
     }
   }
