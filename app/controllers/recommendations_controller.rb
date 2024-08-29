@@ -14,8 +14,6 @@ class RecommendationsController < ApplicationController
     # Call the weather method to set @weather
     @weather = get_weather
 
-    return
-
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o",
@@ -66,7 +64,7 @@ class RecommendationsController < ApplicationController
     weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
     weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
     weather_temp = weather_service.current_weather(@user.location)["main"]["temp"]
-    weather = (weather_summary + " " + weather_temp.to_s)
+    return (weather_summary + " " + weather_temp.to_s)
     # weather_temp = (weather_service.current_weather(@user.location).main.temp + 273)
     # weather = (weather_summary + " " + weather_temp.to_s)
   end
