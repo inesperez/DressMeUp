@@ -2,16 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="camera"
 export default class extends Controller {
-  static values = {
-    edit: Boolean
-  }
-
   static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input",
-                    "upload","uploadButton", "cameraButton", "cameraContainer", "addGarment"];
+                    "submitUploadButton","submitCameraButton", "addGarment", "selectionView", "uploadView", "cameraView",
+                  "backArrow", "uploadForm", "navbarToggle"];
 
   connect() {
-    console.log(this.editValue);
-
     this.width = 320;    // We will scale the photo width to this
     this.height = 0;     // This will be computed based on the input stream
 
@@ -30,23 +25,56 @@ export default class extends Controller {
 
   }
 
-  fireUpload(event) {
-    event.preventDefault();
-    this.uploadButtonTarget.classList.add("d-none");
-    this.uploadTarget.classList.remove("d-none");
-    this.cameraButtonTarget.classList.toggle("btn-primary");
-    this.cameraButtonTarget.classList.toggle("btn-link");
-    this.cameraButtonTarget.innerText = "Take photo instead";
+  toggle() {
+    this.uploadFormTarget.classList.toggle("d-none")
   }
 
-  fireCamera(event) {
+  showUploadView(event) {
     event.preventDefault();
-    this.cameraButtonTarget.classList.toggle("d-none");
-    this.cameraContainerTarget.classList.toggle("d-none");
-    this.uploadButtonTarget.classList.toggle("d-none");
-    this.uploadButtonTarget.innerText = "Upload photo instead";
-    this.uploadButtonTarget.classList.toggle("btn-link");
+    this.selectionViewTarget.classList.add('d-none');
+    this.uploadViewTarget.classList.remove('d-none');
+  }
+
+  onInputChange(event) {
+    if (event.target.files[0]) {
+      this.showSubmitButtons();
+    } else {
+      this.hideSubmitButtons();
     }
+  }
+
+  showSubmitButtons() {
+    this.submitUploadButtonTarget.classList.remove('d-none');
+    this.submitCameraButtonTarget.classList.remove('d-none');
+  }
+
+  hideSubmitButtons() {
+    this.submitUploadButtonTarget.classList.add('d-none');
+    this.submitCameraButtonTarget.classList.add('d-none');
+  }
+
+  showCameraView(event) {
+    event.preventDefault();
+    this.selectionViewTarget.classList.add('d-none');
+    this.cameraViewTarget.classList.remove('d-none');
+  }
+
+  resetUpload() {
+    this.selectionViewTarget.classList.remove('d-none');
+    this.uploadViewTarget.classList.add('d-none');
+  }
+
+  resetCapture() {
+    this.selectionViewTarget.classList.remove('d-none');
+    this.cameraViewTarget.classList.add('d-none');
+  }
+
+  resetModal() {
+    this.selectionViewTarget.classList.remove("d-none");
+    this.cameraViewTarget.classList.add('d-none');
+    this.uploadViewTarget.classList.add('d-none');
+    this.uploadFormTarget.classList.add('d-none');
+  }
 
   resizeVideos() {
     console.log("canPLAYYYYY")
@@ -70,10 +98,13 @@ export default class extends Controller {
     context.fillRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
 
     this.previewTarget.setAttribute("src", "");
+
     this.retakeButtonTarget.classList.add("d-none");
     this.pictureButtonTarget.classList.remove("d-none");
     this.videoTarget.classList.remove("d-none");
     this.inputTarget.classList.remove("d-none");
+
+    this.hideSubmitButtons();
   }
 
   takePicture(e) {
@@ -98,10 +129,11 @@ export default class extends Controller {
 
         this.previewTarget.setAttribute("src", url);
 
-        this.inputTarget.classList.add("d-none");
         this.pictureButtonTarget.classList.add("d-none");
         this.videoTarget.classList.add("d-none");
         this.retakeButtonTarget.classList.remove("d-none");
+
+        this.showSubmitButtons();
       });
     } else {
       clearPicture();
