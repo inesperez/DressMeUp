@@ -1,36 +1,47 @@
+<<<<<<< HEAD
+<div class="overlay d-none position-fixed bottom-0" data-camera-target="uploadForm">
+  <div class="form-upload">
+    <div data-camera-target="selectionView">
+      <%= link_to "Upload a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#showUploadView" } %>
+      <%= link_to "Take a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#showCameraView" } %>
+    </div>
+=======
 <div data-controller="camera" data-camera-edit-value="<%= garment.persisted? %>" class="form-upload">
   <%= link_to "Upload a photo", "#", :class => "btn primary", data: {action: "click->camera#fireUpload", camera_target: "uploadButton"} %>
   <%= link_to "Take a photo", "#", :class => "btn primary", data: {action: "click->camera#fireCamera", camera_target: "cameraButton"} %>
+>>>>>>> master
 
-  <div data-camera-target="upload" class="d-none">
-    <%= simple_form_for garment do |f| %>
-      <div>
-        <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-        <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} } %>
-      </div>
-      <% if garment.photo.attached? %>
-      <p>Existing:</p>
-        <%= cl_image_tag garment.photo.key, class: ''%>
-    <% end %>
-  </div>
+    <div data-camera-target="uploadView" class="d-none">
 
+      <%= simple_form_for garment do |f| %>
+        <div>
+          <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
+          <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input", action: 'change->camera#onInputChange'} } %>
+        </div>
+      <% end %>
+      <button class="btn btn-primary d-none" data-camera-target="submitUploadButton">Add to my Wardrobe</button>
+      <button data-action="click->camera#resetUpload"><i class="fa-solid fa-arrow-left-long"></i>back</button>
+      <button data-action="click->camera#resetModal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
 
-    <div class="camera-container d-none" data-camera-target="cameraContainer">
-      <canvas id="canvas" data-camera-target="canvas"></canvas>
+    <div data-camera-target="cameraView" class="d-none">
+      <button data-action="click->camera#resetCapture"><i class="fa-solid fa-arrow-left-long"></i>back</button>
+      <button data-action="click->camera#resetModal"><i class="fa-solid fa-xmark"></i></button>
+      <canvas id="canvas" data-camera-target="canvas" class="d-none"></canvas>
       <div class="output">
         <img id="photo" alt="The screen capture will appear in this box."
-             data-camera-target="preview"/>
+              data-camera-target="preview"/>
       </div>
 
       <video id="video"
-             data-camera-target="video"
-             data-action="canplay->camera#resizeVideos">
+              data-camera-target="video"
+              data-action="canplay->camera#resizeVideos">
         Video stream not available.
       </video>
       <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture">Take photo</button>
       <button class="d-none" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
-    </div>
 
-    <%= f.button :submit, "Add to my wardrobe", class: "btn primary d-none", data: {camera_target: "addGarment"}%>
-  <% end %>
+      <button class="btn btn-primary d-none" data-camera-target="submitCameraButton">Add to my Wardrobe</button>
+    </div>
+  </div>
 </div>
