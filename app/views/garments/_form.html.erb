@@ -1,8 +1,8 @@
 <div data-controller="camera">
   <%= simple_form_for @garment do |f| %>
     <div>
-      <%= f.input :ai_description, placeholder: 'AI Description' %>
-      <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} }  %>
+      <%= f.input :ai_description, placeholder: 'Describe your item' %>
+      <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input"} }, capture: 'environment'  %>
     </div>
 
 
@@ -13,15 +13,16 @@
              data-camera-target="preview"/>
       </div>
 
+
       <video id="video"
              data-camera-target="video"
              data-action="canplay->camera#resizeVideos">
         Video stream not available.
       </video>
-      <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture">Take photo</button>
-      <button class="d-none" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
     </div>
+      <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture"  class= "btn btn-primary">Take photo</button>
+      <button class="btn btn-primary d-none" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
 
-    <%= f.button :submit, "Add garment", class: "btn btn-primary" %>
+    <%= f.button :submit, "Add garment", class: "btn btn-primary disabled" %>
   <% end %>
 </div>
