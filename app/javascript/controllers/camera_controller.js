@@ -2,9 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="camera"
 export default class extends Controller {
-  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input"];
+  static values = {
+    edit: Boolean
+  }
+
+  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input",
+                    "upload","uploadButton", "cameraButton", "cameraContainer", "addGarment"];
 
   connect() {
+    console.log(this.editValue);
+
     this.width = 320;    // We will scale the photo width to this
     this.height = 0;     // This will be computed based on the input stream
 
@@ -22,6 +29,24 @@ export default class extends Controller {
     });
 
   }
+
+  fireUpload(event) {
+    event.preventDefault();
+    this.uploadButtonTarget.classList.add("d-none");
+    this.uploadTarget.classList.remove("d-none");
+    this.cameraButtonTarget.classList.toggle("btn-primary");
+    this.cameraButtonTarget.classList.toggle("btn-link");
+    this.cameraButtonTarget.innerText = "Take photo instead";
+  }
+
+  fireCamera(event) {
+    event.preventDefault();
+    this.cameraButtonTarget.classList.toggle("d-none");
+    this.cameraContainerTarget.classList.toggle("d-none");
+    this.uploadButtonTarget.classList.toggle("d-none");
+    this.uploadButtonTarget.innerText = "Upload photo instead";
+    this.uploadButtonTarget.classList.toggle("btn-link");
+    }
 
   resizeVideos() {
     console.log("canPLAYYYYY")
