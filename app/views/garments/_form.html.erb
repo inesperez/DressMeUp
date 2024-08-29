@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 <div class="overlay d-none position-fixed bottom-0" data-camera-target="uploadForm">
   <div class="form-upload">
     <div data-camera-target="selectionView">
       <%= link_to "Upload a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#showUploadView" } %>
       <%= link_to "Take a photo", "#", :class => "btn btn-primary", data: {action: "click->camera#showCameraView" } %>
     </div>
-=======
-<div data-controller="camera" data-camera-edit-value="<%= garment.persisted? %>" class="form-upload">
-  <%= link_to "Upload a photo", "#", :class => "btn primary", data: {action: "click->camera#fireUpload", camera_target: "uploadButton"} %>
-  <%= link_to "Take a photo", "#", :class => "btn primary", data: {action: "click->camera#fireCamera", camera_target: "cameraButton"} %>
->>>>>>> master
 
     <div data-camera-target="uploadView" class="d-none">
 
