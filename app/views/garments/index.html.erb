@@ -2,7 +2,11 @@
 <div class= "all-index-images">
   <% @garments.each do |garment| %>
     <%= link_to garment_path(garment), class: 'image-wrapper' do %>
-        <%=image_tag garment.image_url, class: 'col-6 image-index' %>
+      <% if garment.photo.attached? %>
+        <%= cl_image_tag garment.photo.key, class: "image-show" %>
+      <% else %>
+        <%= image_tag garment.image_url, class: "image-show" %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

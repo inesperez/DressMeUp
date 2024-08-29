@@ -6,7 +6,8 @@ export default class extends Controller {
     edit: Boolean
   }
 
-  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input"];
+  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input",
+                    "upload","uploadButton", "cameraButton", "cameraContainer", "addGarment"];
 
   connect() {
     console.log(this.editValue);
@@ -28,6 +29,24 @@ export default class extends Controller {
     });
 
   }
+
+  fireUpload(event) {
+    event.preventDefault();
+    this.uploadButtonTarget.classList.add("d-none");
+    this.uploadTarget.classList.remove("d-none");
+    this.cameraButtonTarget.classList.toggle("btn-primary");
+    this.cameraButtonTarget.classList.toggle("btn-link");
+    this.cameraButtonTarget.innerText = "Take photo instead";
+  }
+
+  fireCamera(event) {
+    event.preventDefault();
+    this.cameraButtonTarget.classList.toggle("d-none");
+    this.cameraContainerTarget.classList.toggle("d-none");
+    this.uploadButtonTarget.classList.toggle("d-none");
+    this.uploadButtonTarget.innerText = "Upload photo instead";
+    this.uploadButtonTarget.classList.toggle("btn-link");
+    }
 
   resizeVideos() {
     console.log("canPLAYYYYY")
