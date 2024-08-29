@@ -1,15 +1,12 @@
 <h2> Recommendations </h2>
 
-<<<<<<< HEAD
-<p>
-  <%= @content %>
-</p>
-=======
-<% @recommendations.each do |recommendation| %>
-  <div class="d-flex">
+<%= @response_json %>
+
+
+<%# <% @recommendations.each do |recommendation| %>
+  <%# <div class="d-flex"> %>
     <p>Recommendation</p>
-    <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
-    <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
-  </div>
-<% end %>
->>>>>>> master
+    <%# <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
+    <%# <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
+  <%# </div> %>
+<%# <% end %> %>

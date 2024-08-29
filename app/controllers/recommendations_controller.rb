@@ -45,21 +45,21 @@ class RecommendationsController < ApplicationController
           - **One top** (garment type: upper body garment)
           - **One bottom** (garment type: lower body garment).
 
-          The output **must** follow this exact format:
-            { \"matches\": [ [top1, bottom1], [top2, bottom2], [top3, bottom3], ... ] }
+          Provide the ranked outfits only as a JSON object, without any code block markers, labels, or extra formatting. The JSON should be formatted as follows:
+          { \"matches\": [ [top1, bottom1], [top2, bottom2], [top3, bottom3], ... ] }
 
-          Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format. Each combination **must
-          contain exactly one top (upper body clothing) and one bottom (lower body clothing)**. Double-check each
-          combination to make sure this rule is followed. Clothing can be reused in different combinations.
-
-          Do not include any other text, explanations, or descriptions—just the JSON object."
+          - Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format.
+          - Ensure the JSON is syntactically correct and valid.
+          - Do not include any other text, explanations, or descriptions—only the JSON object.
+          - Double-check each combination to ensure it contains exactly one top (upper-body clothing) and one bottom (lower body clothing). Clothing can be reused in different combinations.
+          "
         }
       ]
     })
 
-    response_json = chatgpt_response["choices"][0]["message"]["content"]
-    recommendation_ids = JSON.parse(response_json)["matches"]
-    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
+    @response_json = chatgpt_response["choices"][0]["message"]["content"]
+    # recommendation_ids = JSON.parse(response_json)["matches"]
+    # @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
 
     # @recommendations = Recommendation.all
     # ranked_outfits[0][:matching]%>
