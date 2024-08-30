@@ -9,7 +9,7 @@
     </div>
 
     <div data-camera-target="selectionView" class="buttons-form">
-      <img src="app/assets/images/EmptyState.jpg" alt="upload image">
+      <%# <img src="app/assets/images/EmptyState.jpg" alt="upload image"> %>
       <p>Choose how you would like to upload your images</p>
       <%= link_to "Choose from gallery", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showUploadView" } %>
       <%= link_to "Take picture ", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showCameraView" } %>
@@ -19,10 +19,10 @@
       <%= simple_form_for garment do |f| %>
         <div>
           <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-          <%= f.input :photo, as: :file, input_html: { data: { camera_target: "input", action: 'change->camera#onInputChange'} } %>
+          <%= f.input :photo, as: :file, input_html: { data: { action: 'change->camera#onInputChange'} } %>
+          <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none", data: { camera_target: "submitUploadButton" } %>
         </div>
       <% end %>
-      <button class="btn btn-primary d-none" data-camera-target="submitUploadButton">Add to my Wardrobe</button>
     </div>
 
     <div data-camera-target="cameraView" class="d-none camera-view">
@@ -40,7 +40,11 @@
       <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture" class="btn primary">Take photo</button>
       <button class="d-none secondary" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
 
-      <button class="btn btn-primary d-none" data-camera-target="submitCameraButton">Add to my Wardrobe</button>
+      <%= simple_form_for garment do |f| %>
+        <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
+        <%= f.input :photo, as: :file, input_html: { data: { camera_target: "cameraInput"} }, as: :hidden %>
+        <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none", data: { camera_target: "submitCameraButton" } %>
+      <% end %>
     </div>
   </div>
 </div>

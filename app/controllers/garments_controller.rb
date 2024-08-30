@@ -10,7 +10,7 @@ class GarmentsController < ApplicationController
     @garment = Garment.new(garment_params)
     @garment.user = @user
     if @garment.save
-      redirect_to garment_path(@garment), notice: 'Garment was successfully created.'
+      redirect_to garments_path, notice: 'Garment was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

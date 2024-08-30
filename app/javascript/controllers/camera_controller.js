@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="camera"
 export default class extends Controller {
-  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input",
+  static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "cameraInput", "uploadInput",
                     "submitUploadButton","submitCameraButton", "addGarment", "selectionView", "uploadView", "cameraView",
                   "backArrow", "uploadForm", "navbarToggle","backButtonCapture", "backButtonUpload"];
 
@@ -34,6 +34,7 @@ export default class extends Controller {
     this.selectionViewTarget.classList.add('d-none');
     this.uploadViewTarget.classList.remove('d-none');
     this.backButtonUploadTarget.classList.remove("d-none");
+    this.backButtonCaptureTarget.classList.add("d-none");
   }
 
   onInputChange(event) {
@@ -59,18 +60,20 @@ export default class extends Controller {
     this.selectionViewTarget.classList.add('d-none');
     this.cameraViewTarget.classList.remove('d-none');
     this.backButtonCaptureTarget.classList.remove("d-none");
+    this.backButtonUploadTarget.classList.add("d-none");
+    this.uploadViewTarget.classList.add('d-none');
   }
 
   resetUpload() {
     this.selectionViewTarget.classList.remove('d-none');
     this.uploadViewTarget.classList.add('d-none');
-    this.backButtonUploadTarget.classList.add("d-none");
+    this.backButtonUploadTarget.classList.remove("d-none");
   }
 
   resetCapture() {
     this.selectionViewTarget.classList.remove('d-none');
     this.cameraViewTarget.classList.add('d-none');
-    this.backButtonCaptureTarget.classList.add("d-none");
+    this.backButtonCaptureTarget.classList.remove("d-none");
 
   }
 
@@ -107,7 +110,7 @@ export default class extends Controller {
     this.retakeButtonTarget.classList.add("d-none");
     this.pictureButtonTarget.classList.remove("d-none");
     this.videoTarget.classList.remove("d-none");
-    this.inputTarget.classList.remove("d-none");
+    this.cameraInputTarget.classList.remove("d-none");
 
     this.hideSubmitButtons();
   }
@@ -128,7 +131,10 @@ export default class extends Controller {
         const dataContainer = new DataTransfer();
         dataContainer.items.add(file);
 
-        this.inputTarget.files = dataContainer.files;
+        console.log({file})
+
+        this.cameraInputTarget.files = dataContainer.files;
+        // @BEN unsure this is saving to the hidden input field
 
         const url = URL.createObjectURL(blob);
 
