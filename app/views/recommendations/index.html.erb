@@ -1,9 +1,46 @@
-<h2> Recommendations </h2>
+<div class="text-center">
+<h2> Pick your outfit </h2>
+</div>
+<div class="d-flex justify-content-center align-items-center">
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <% @recommendations.each_with_index do |recommendation, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="d-block w-100">
+              <% if recommendation[0].photo.attached? %>
+                <%= cl_image_tag recommendation[0].photo.key, class: "card-category carousel-card" %>
+              <% else %>
+                <%= image_tag(recommendation[0].image_url, class: "card-category carousel-card") %>
+              <% end %>
+              <% if recommendation[1].photo.attached? %>
+                <%= cl_image_tag recommendation[1].photo.key, class: "card-category carousel-card" %>
+              <% else %>
+                <%= image_tag(recommendation[1].image_url, class: "card-category carousel-card") %>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
 
-<% @recommendations.each do |recommendation| %>
-  <div class="d-flex">
-    <p>Recommendation</p>
-      <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
-      <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-<% end %>
+
+<%#
+<div class="container">
+  <% @recommendations.each do |recommendation| %>
+    <%# <div class="d-flex cards">
+      <div style="margin: auto; padding: auto;">
+        <h2> Your outfit for the day </h2>
+
+      </div>
+    </div>
+  <% end %>
+<%# </div> %>

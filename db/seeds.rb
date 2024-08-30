@@ -1,29 +1,10 @@
 require 'open-uri'
 require 'faker'
+require 'mini_magick'
 
 Garment.destroy_all
 User.destroy_all
 
-IMAGES = [
-  # tops
-  "https://static.zara.net/assets/public/c5ad/e9e3/3b8f4b648c02/9b3e82c05a75/02142153441-e1/02142153441-e1.jpg?ts=1724325334014&w=750",
-  "https://static.zara.net/assets/public/28a1/2541/4c384e229a35/56f69a7ff2f7/01131807644-e1/01131807644-e1.jpg?ts=1722936482233&w=396",
-  "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
-  "https://static.zara.net/assets/public/4fef/17c4/3f24488ab471/285278f64714/02893104802-e1/02893104802-e1.jpg?ts=1722871726632&w=396",
-  "https://static.zara.net/assets/public/21b6/a1c2/5ff045f994a6/494eb4f51db7/02142115806-e1/02142115806-e1.jpg?ts=1723453415392&w=396",
-  "https://static.zara.net/assets/public/e651/83a9/85c94204b75a/dc4c5596c146/05536113620-e1/05536113620-e1.jpg?ts=1720004227302&w=396",
-  "https://static.zara.net/assets/public/b45f/bd0f/33e54c1d82f7/4eac485d4ce5/08417800621-e1/08417800621-e1.jpg?ts=1723650458872&w=396",
-  "https://static.zara.net/assets/public/81c5/8e3a/f3e143749223/57a4b125f060/02893104300-e1/02893104300-e1.jpg?ts=1722871396195&w=396",
-  "https://static.zara.net/assets/public/218a/8206/096d4e6d88fc/096497dbb495/02893104400-e1/02893104400-e1.jpg?ts=1722871387524&w=396",
-  "https://static.zara.net/assets/public/dd6f/1e3e/c5014b27b697/3f89d9ddd3ae/02142112600-e1/02142112600-e1.jpg?ts=1723644496360&w=396",
-  # bottoms
-  "https://static.zara.net/assets/public/73b3/a947/09a449feb515/4cbaa69f6ad9/08417801712-e1/08417801712-e1.jpg?ts=1723650452774&w=750",
-  "https://static.zara.net/assets/public/2d38/8003/934c4d7e8cb9/a411e2c1ad8c/01889159427-e1/01889159427-e1.jpg?ts=1723651182038&w=396",
-  "https://static.zara.net/assets/public/fcb4/2c17/ed3540fa8ea7/462f31c9da30/08944336611-e1/08944336611-e1.jpg?ts=1723805674849&w=396",
-  "https://static.zara.net/assets/public/7f47/c252/abcc491ca1bb/cb1cfd8277fa/09929224800-e1/09929224800-e1.jpg?ts=1723020791628&w=396",
-  "https://static.zara.net/assets/public/ccae/d934/f767462cb900/7a3d38a22bc1/02157232632-015-a1/02157232632-015-a1.jpg?ts=1720801468574&w=750",
-  "https://static.zara.net/assets/public/5885/f99e/6d094c1e8385/ddc723e808c1/02142134681-e1/02142134681-e1.jpg?ts=1724315557111&w=750"
-]
 
 ines = User.create!(
   email: "ines@ines.com",
@@ -31,12 +12,159 @@ ines = User.create!(
   location: "London, UK"
 )
 
-10.times do
-  image = URI.open(IMAGES.sample)
-  garment = Garment.new(
-    ai_description: Faker::Marketing.buzzwords,
-    user: ines
-  )
-  garment.photo.attach(io: image, filename: "image.png", content_type: "image/png")
-  garment.save
-end
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/c5ad/e9e3/3b8f4b648c02/9b3e82c05a75/02142153441-e1/02142153441-e1.jpg?ts=1724325334014&w=750",
+  ai_description: "garment_type: top, garment_description: Light blue, long-sleeved top with a draped, cowl neckline. Made from a soft, likely stretchable fabric, the top has a smooth, slightly shiny texture. The design is stylish and sophisticated, suitable for both casual and semi-formal occasions. Ideal for cooler weather due to its long sleeves and layered front, this top can be paired well with skirts or trousers."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/28a1/2541/4c384e229a35/56f69a7ff2f7/01131807644-e1/01131807644-e1.jpg?ts=1722936482233&w=396",
+  ai_description: "garment_type: top, garment_description: Soft pink, sleeveless top featuring a draped cowl neckline. The fabric appears smooth and lightweight, likely a silky or satin material, giving it a luxurious and elegant feel. This top is suitable for warmer weather and ideal for both casual and semi-formal occasions, especially when paired with skirts or tailored trousers. Its design and color make it a versatile piece that can be dressed up or down depending on the occasion."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
+  ai_description: "garment_type: top, garment_description: Black, sleeveless top with a tailored, structured design. The fabric appears to be a smooth, possibly woven material, with a slightly stiff texture that helps maintain the garment's shape. It features a minimalist style with clean lines, making it suitable for formal or professional settings. The top is versatile and can be worn in various weather conditions, though it is ideal for warmer weather or layered under a blazer or jacket for cooler conditions. The solid black color adds to its classic and sophisticated appeal."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/4fef/17c4/3f24488ab471/285278f64714/02893104802-e1/02893104802-e1.jpg?ts=1722871726632&w=396",
+  ai_description: "garment_type: top, garment_description: Gray, short-sleeved knit top. The fabric appears to be a soft, medium-weight knit, likely made from wool or a wool blend, providing warmth while maintaining breathability. The design is simple and classic, with a crew neckline and a slightly relaxed fit. This top is versatile and suitable for casual or semi-casual occasions, particularly in cooler weather or during transitional seasons like spring or fall. The solid gray color adds to its versatility, allowing it to be paired easily with various bottoms."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/21b6/a1c2/5ff045f994a6/494eb4f51db7/02142115806-e1/02142115806-e1.jpg?ts=1723453415392&w=396",
+  ai_description: "garment_type: top, garment_description: Beige, sleeveless tank top. The fabric appears to be lightweight, likely made from a cotton or cotton-blend material, providing a soft and comfortable feel. The design is minimalistic, featuring a scoop neckline and a fitted silhouette. This top is ideal for warm weather and casual occasions, offering a basic but versatile piece that can be layered under other garments or worn on its own. The neutral beige color enhances its versatility, making it easy to pair with a variety of other clothing items."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/b45f/bd0f/33e54c1d82f7/4eac485d4ce5/08417800621-e1/08417800621-e1.jpg?ts=1723650458872&w=396",
+  ai_description: "garment_type: top, garment_description: Light pink, long-sleeved sweatshirt. The fabric appears to be soft and cozy, likely made from a cotton or cotton-blend material with a fleece lining. The design features a crew neckline and slightly oversized sleeves with ribbed cuffs and hem, giving it a relaxed and casual look. This sweatshirt is ideal for cooler weather, making it perfect for casual outings or lounging at home. The pastel pink color adds a soft, feminine touch, making it both comfortable and stylish for everyday wear."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/81c5/8e3a/f3e143749223/57a4b125f060/02893104300-e1/02893104300-e1.jpg?ts=1722871396195&w=396",
+  ai_description: "garment_type: top, garment_description: Bright yellow, short-sleeved knit top. The fabric appears to be a textured knit, likely made from a cotton or cotton-blend material, offering both comfort and breathability. The design is simple with a crew neckline and ribbed details at the collar, cuffs, and hem. This top is vibrant and cheerful, making it suitable for casual occasions, especially in warmer weather or during the spring and summer seasons. The solid yellow color adds a bold, eye-catching element, making it a standout piece in any wardrobe."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://lp.stories.com/app005prod?set=key[resolve.pixelRatio],value[1]&set=key[resolve.width],value[1500]&set=key[resolve.height],value[10000]&set=key[resolve.imageFit],value[containerwidth]&set=key[resolve.allowImageUpscaling],value[0]&set=key[resolve.format],value[jpeg]&set=key[resolve.quality],value[80]&set=source[/c3/74/c37474687d84cf87dcc7d4d8b45f3cfc90647501.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],ImageVersion[2]&call=url[file:/product/dynamic.chain]",
+  ai_description: "garment_type: top, garment_description: Beige, cropped trench coat. The fabric appears to be a durable, mid-weight cotton or cotton-blend material, typical of trench coats, offering both wind resistance and a structured silhouette. The design features a wide collar, double-breasted button closure, and oversized cuffs with strap detailing. The coat also has a storm flap at the front, adding to its classic trench coat aesthetic. This garment is suitable for cooler weather, making it ideal for transitional seasons like spring and fall. The neutral beige color enhances its versatility, making it easy to pair with various outfits for both casual and semi-formal occasions."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://lp.stories.com/app005prod?set=key[resolve.pixelRatio],value[1]&set=key[resolve.width],value[1500]&set=key[resolve.height],value[10000]&set=key[resolve.imageFit],value[containerwidth]&set=key[resolve.allowImageUpscaling],value[0]&set=key[resolve.format],value[jpeg]&set=key[resolve.quality],value[80]&set=source[/b4/1d/b41d1f10afa36520b04e92d1affeb631365b55c5.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],ImageVersion[1]&call=url[file:/product/dynamic.chain]",
+  ai_description: "garment_type: top, garment_description: Dark green, long-sleeved knit sweater. The fabric appears to be a soft, thick knit, likely made from wool or a wool blend, providing warmth and comfort. The design features a crew neckline with ribbed detailing at the collar, cuffs, and hem, giving it a classic and cozy look. The relaxed fit and solid color make this sweater versatile for casual wear, especially in colder weather. The rich green color adds a touch of elegance, making it suitable for both casual and slightly more dressed-up occasions during the fall and winter seasons."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/73b3/a947/09a449feb515/4cbaa69f6ad9/08417801712-e1/08417801712-e1.jpg?ts=1723650452774&w=750",
+  ai_description: "garment_type: bottom, garment_description: Cream-colored, relaxed-fit trousers. The fabric appears to be soft and comfortable, likely made from a blend of cotton or a similar material, providing a smooth and slightly textured feel. The design features an elastic waistband for ease and comfort, with a simple, minimalist style that lacks any visible embellishments or pockets. These trousers are suitable for casual wear and are ideal for lounging or low-key outings. The light color and loose fit make them perfect for warm weather, offering a breezy and comfortable option for everyday wear."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/73b3/a947/09a449feb515/4cbaa69f6ad9/08417801712-e1/08417801712-e1.jpg?ts=1723650452774&w=750",
+  ai_description: "garment_type: bottom, garment_description: Cream-colored, relaxed-fit trousers. The fabric appears to be soft and comfortable, likely made from a blend of cotton or a similar material, providing a smooth and slightly textured feel. The design features an elastic waistband for ease and comfort, with a simple, minimalist style that lacks any visible embellishments or pockets. These trousers are suitable for casual wear and are ideal for lounging or low-key outings. The light color and loose fit make them perfect for warm weather, offering a breezy and comfortable option for everyday wear."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/2d38/8003/934c4d7e8cb9/a411e2c1ad8c/01889159427-e1/01889159427-e1.jpg?ts=1723651182038&w=396",
+  ai_description: "garment_type: bottom, garment_description: Blue, wide-leg denim trousers. The fabric is classic denim, offering a durable and slightly structured feel, typical of cotton denim material. The design features an elastic waistband with a drawstring for adjustable comfort, along with side pockets for practicality. The wide-leg silhouette gives these trousers a relaxed, casual vibe, making them suitable for everyday wear. The medium blue wash adds versatility, allowing them to be easily paired with various tops. These trousers are ideal for casual occasions and can be worn in mild to warm weather, providing both style and comfort."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/fcb4/2c17/ed3540fa8ea7/462f31c9da30/08944336611-e1/08944336611-e1.jpg?ts=1723805674849&w=396",
+  ai_description: "garment_type: bottom, garment_description: Bright magenta, tailored trousers. The fabric appears to be a structured, medium-weight material, likely a blend of polyester, viscose, and elastane, providing a smooth and slightly stretchy feel. The design features a classic tailored fit with a high waist, belt loops, and a concealed front closure for a clean finish. The trousers have front pleats and tapered legs, offering a polished and professional look. The bold magenta color adds a vibrant and modern twist, making these trousers suitable for formal or semi-formal occasions, as well as for making a statement in professional settings. Ideal for year-round wear, depending on how they are styled."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/7f47/c252/abcc491ca1bb/cb1cfd8277fa/09929224800-e1/09929224800-e1.jpg?ts=1723020791628&w=396",
+  ai_description: "garment_type: bottom, garment_description: Black, wide-leg tailored trousers. The fabric appears to be a smooth, medium-weight material, likely a blend of polyester, wool, or similar fibers, providing a refined and structured feel. The design features a high waist with belt loops, a concealed front closure, and front pleats that enhance the wide-leg silhouette. These trousers have a sophisticated, flowing look that is both elegant and versatile, making them suitable for formal occasions or professional settings. The classic black color adds to their versatility, allowing them to be easily paired with various tops and blazers. Ideal for year-round wear, especially in professional or dressy environments."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/d41f/786e/27414a0ea4e3/170babc9a3cc/05520221443-e1/05520221443-e1.jpg?ts=1720771680404&w=824",
+  ai_description: "garment_type: bottom, garment_description: Dark indigo, wide-leg denim trousers. The fabric is traditional denim, offering durability and a slightly structured feel, typical of cotton denim material. The design features an elastic waistband with a drawstring for adjustable comfort, along with front pockets and subtle stitching details. The wide-leg silhouette gives these trousers a relaxed and casual vibe, making them suitable for everyday wear. The deep indigo color adds a classic touch, allowing these trousers to be versatile enough to pair with various tops. These trousers are ideal for casual occasions and can be worn in mild to warm weather, providing both style and comfort."
+)
+
+
+# IMAGES = [
+#   # tops - short
+#   "https://static.zara.net/assets/public/c5ad/e9e3/3b8f4b648c02/9b3e82c05a75/02142153441-e1/02142153441-e1.jpg?ts=1724325334014&w=750",
+#   "https://static.zara.net/assets/public/28a1/2541/4c384e229a35/56f69a7ff2f7/01131807644-e1/01131807644-e1.jpg?ts=1722936482233&w=396",
+#   "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
+#   "https://static.zara.net/assets/public/4fef/17c4/3f24488ab471/285278f64714/02893104802-e1/02893104802-e1.jpg?ts=1722871726632&w=396",
+#   "https://static.zara.net/assets/public/21b6/a1c2/5ff045f994a6/494eb4f51db7/02142115806-e1/02142115806-e1.jpg?ts=1723453415392&w=396",
+
+#   # tops - long/warm
+#   "https://static.zara.net/assets/public/b45f/bd0f/33e54c1d82f7/4eac485d4ce5/08417800621-e1/08417800621-e1.jpg?ts=1723650458872&w=396",
+#   "https://static.zara.net/assets/public/81c5/8e3a/f3e143749223/57a4b125f060/02893104300-e1/02893104300-e1.jpg?ts=1722871396195&w=396",
+#   "https://lp.stories.com/app005prod?set=key[resolve.pixelRatio],value[1]&set=key[resolve.width],value[1500]&set=key[resolve.height],value[10000]&set=key[resolve.imageFit],value[containerwidth]&set=key[resolve.allowImageUpscaling],value[0]&set=key[resolve.format],value[jpeg]&set=key[resolve.quality],value[80]&set=source[/c3/74/c37474687d84cf87dcc7d4d8b45f3cfc90647501.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],ImageVersion[2]&call=url[file:/product/dynamic.chain]",
+#   "https://lp.stories.com/app005prod?set=key[resolve.pixelRatio],value[1]&set=key[resolve.width],value[1500]&set=key[resolve.height],value[10000]&set=key[resolve.imageFit],value[containerwidth]&set=key[resolve.allowImageUpscaling],value[0]&set=key[resolve.format],value[jpeg]&set=key[resolve.quality],value[80]&set=source[/b4/1d/b41d1f10afa36520b04e92d1affeb631365b55c5.jpg],origin[dam],type[DESCRIPTIVESTILLLIFE],ImageVersion[1]&call=url[file:/product/dynamic.chain]",
+
+#   # bottoms
+#   "https://static.zara.net/assets/public/73b3/a947/09a449feb515/4cbaa69f6ad9/08417801712-e1/08417801712-e1.jpg?ts=1723650452774&w=750",
+#   "https://static.zara.net/assets/public/2d38/8003/934c4d7e8cb9/a411e2c1ad8c/01889159427-e1/01889159427-e1.jpg?ts=1723651182038&w=396",
+#   "https://static.zara.net/assets/public/fcb4/2c17/ed3540fa8ea7/462f31c9da30/08944336611-e1/08944336611-e1.jpg?ts=1723805674849&w=396",
+#   "https://static.zara.net/assets/public/7f47/c252/abcc491ca1bb/cb1cfd8277fa/09929224800-e1/09929224800-e1.jpg?ts=1723020791628&w=396",
+#   "https://static.zara.net/assets/public/d41f/786e/27414a0ea4e3/170babc9a3cc/05520221443-e1/05520221443-e1.jpg?ts=1720771680404&w=824"
+# ]
+
+
+
+# IMAGES = [
+#   # tops
+#   "https://static.zara.net/assets/public/c5ad/e9e3/3b8f4b648c02/9b3e82c05a75/02142153441-e1/02142153441-e1.jpg?ts=1724325334014&w=750",
+#   "https://static.zara.net/assets/public/28a1/2541/4c384e229a35/56f69a7ff2f7/01131807644-e1/01131807644-e1.jpg?ts=1722936482233&w=396",
+#   "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
+#   "https://static.zara.net/assets/public/4fef/17c4/3f24488ab471/285278f64714/02893104802-e1/02893104802-e1.jpg?ts=1722871726632&w=396",
+#   "https://static.zara.net/assets/public/21b6/a1c2/5ff045f994a6/494eb4f51db7/02142115806-e1/02142115806-e1.jpg?ts=1723453415392&w=396",
+#   "https://static.zara.net/assets/public/e651/83a9/85c94204b75a/dc4c5596c146/05536113620-e1/05536113620-e1.jpg?ts=1720004227302&w=396",
+#   "https://static.zara.net/assets/public/b45f/bd0f/33e54c1d82f7/4eac485d4ce5/08417800621-e1/08417800621-e1.jpg?ts=1723650458872&w=396",
+#   "https://static.zara.net/assets/public/81c5/8e3a/f3e143749223/57a4b125f060/02893104300-e1/02893104300-e1.jpg?ts=1722871396195&w=396",
+#   "https://static.zara.net/assets/public/218a/8206/096d4e6d88fc/096497dbb495/02893104400-e1/02893104400-e1.jpg?ts=1722871387524&w=396",
+#   "https://static.zara.net/assets/public/dd6f/1e3e/c5014b27b697/3f89d9ddd3ae/02142112600-e1/02142112600-e1.jpg?ts=1723644496360&w=396",
+#   # bottoms
+#   "https://static.zara.net/assets/public/73b3/a947/09a449feb515/4cbaa69f6ad9/08417801712-e1/08417801712-e1.jpg?ts=1723650452774&w=750",
+#   "https://static.zara.net/assets/public/2d38/8003/934c4d7e8cb9/a411e2c1ad8c/01889159427-e1/01889159427-e1.jpg?ts=1723651182038&w=396",
+#   "https://static.zara.net/assets/public/fcb4/2c17/ed3540fa8ea7/462f31c9da30/08944336611-e1/08944336611-e1.jpg?ts=1723805674849&w=396",
+#   "https://static.zara.net/assets/public/7f47/c252/abcc491ca1bb/cb1cfd8277fa/09929224800-e1/09929224800-e1.jpg?ts=1723020791628&w=396",
+#   "https://static.zara.net/assets/public/ccae/d934/f767462cb900/7a3d38a22bc1/02157232632-015-a1/02157232632-015-a1.jpg?ts=1720801468574&w=750",
+#   "https://static.zara.net/assets/public/5885/f99e/6d094c1e8385/ddc723e808c1/02142134681-e1/02142134681-e1.jpg?ts=1724315557111&w=750"
+# ]
+
+
+
+# def crop_image(image_path)
+#   image = MiniMagick::Image.open(image_path)
+#   image.combine_options do |c|
+#     c.trim
+#     c.repage.+
+#   end
+#   image
+# end
+
+# 3.times do
+#   sleep 45
+#   image = URI.open(IMAGES.sample)
+#   garment = Garment.new(
+#     user: ines
+#   )
+#   garment.photo.attach(io: image, filename: "image.png", content_type: "image/png")
+#   garment.save
+# end
