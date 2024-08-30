@@ -48,5 +48,12 @@
 }
 
 .carousel-card {
+  display: block;
   height: 400px;
+  width: 100dvw;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 0px;
+  z-index: 1;
 }
