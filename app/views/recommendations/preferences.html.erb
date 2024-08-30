@@ -1,38 +1,40 @@
-<h1>Your Preferences</h1>
-<h4>Please select your choices</h4>
-<div class="field" data-controller = "preferences">
-<%= form_with url: recommendations_path, method: :get, local: true do |form| %>
-      <%# <%= form.label :location, "What's your location?" %>
-        <%# <div> %>
-        <%# <%= form.text_field :location %>
-        <%# </div>  %>
-      <%= form.label :occasion, "What's the occasion? (optional)" %>
-        <div class="d-flex">
-          <div>
-             <div>
-              <%= form.select :occasion, options_for_select(
-                 [["", ""],["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other (please specify)", "other"]],
-                 params[:occasion]
-              ),
-                input_html:  { data: { preferences_target: "occasion", action: "change->preferences#fire" } }
-              %>
+<div class="container mt-3 mb-3" style="margin-left: 50px;">
+  <h1>Your Preferences</h1>
+  <h4 style="margin-bottom: 20px;">Please select your choices</h4>
+  <div class="field" data-controller = "preferences">
+    <%= form_with url: recommendations_path, method: :get, local: true do |form| %>
+          <%# <%= form.label :location, "What's your location?" %>
+            <%# <div> %>
+            <%# <%= form.text_field :location %>
+            <%# </div>  %>
+          <%= form.label :occasion, "What's the occasion? (optional)" %>
+            <div>
+              <div>
+                <div>
+                  <%= form.select :occasion, options_for_select(
+                    [["", ""],["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other (please specify)", "other"]],
+                    params[:occasion]
+                  ),
+                    input_html:  {  data: { preferences_target: "occasion", action: "change->preferences#fire" } }
+                  %>
+                </div>
+              </div>
+              </div>
+          <div data-preferences-target="customOccasion"  style="margin-top: 20px;">
+            <%= form.label :custom_occasion, "Specify the occasion (optional)" %>
+            <div>
+            <%= form.text_field :custom_occasion, placeholder: "Specify the occasion", class: "input" %>
             </div>
           </div>
-          </div>
-      <div data-preferences-target="customOccasion">
-        <%= form.label :custom_occasion, "Specify the occasion (optional)" %>
+      <div style="margin-top: 20px;">
+        <%= form.label :feeling, "How are you feeling today? (optional)" %>
         <div>
-        <%= form.text_field :custom_occasion, placeholder: "Specify the occasion" %>
+        <%= form.text_field :feeling, placeholder: "Happy, sad, colorful", class: "input" %>
         </div>
       </div>
-  <div>
-    <%= form.label :feeling, "How are you feeling today? (optional)" %>
-    <div>
-    <%= form.text_field :feeling, placeholder: "Happy, sad, colorful" %>
-    </div>
+      <div class="actions">
+        <%= form.submit "Get Recommendations", class: 'btn secondary mt-4' %>
+      </div>
+    <% end %>
   </div>
-  <div class="actions">
-    <%= form.submit "Get Recommendations" %>
-  </div>
-<% end %>
 </div>
