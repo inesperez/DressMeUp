@@ -1,0 +1,13 @@
+.input, select {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: black;
+  outline: none;
+}
+
+.input:focus, select:focus {
+  border-color: #347D56;
+  box-shadow: 0 0 0 0.2rem rgba(52, 125, 86, 0.61);
+}
