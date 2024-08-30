@@ -1,3 +1,60 @@
 .form-upload {
   background-color: white;
+  height: 400px;
+  width: 300px;
+  border-radius: 8px;
+  position: fixed;
+  bottom: 0;
+  padding: 18px;
+
+ button {
+  right: 18px;
+  border-radius: 8px;
+  border-color: white;
+ }
+}
+
+.buttons-form{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: end;
+  height: 90%;
+
+  img {
+    height: 40%;
+    width: 40%;
+  }
+}
+
+.upload-back-exit-button{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.camera-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+
+  video {
+    align-self: center;
+  }
+
+  img {
+    align-self: center;
+  }
+}
+.output {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
 }

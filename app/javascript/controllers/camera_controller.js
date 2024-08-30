@@ -4,10 +4,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "input",
                     "submitUploadButton","submitCameraButton", "addGarment", "selectionView", "uploadView", "cameraView",
-                  "backArrow", "uploadForm", "navbarToggle"];
+                  "backArrow", "uploadForm", "navbarToggle","backButtonCapture", "backButtonUpload"];
 
   connect() {
-    this.width = 320;    // We will scale the photo width to this
+    this.width = 200;    // We will scale the photo width to this
     this.height = 0;     // This will be computed based on the input stream
 
     this.previewAvailable = false;
@@ -33,6 +33,7 @@ export default class extends Controller {
     event.preventDefault();
     this.selectionViewTarget.classList.add('d-none');
     this.uploadViewTarget.classList.remove('d-none');
+    this.backButtonUploadTarget.classList.remove("d-none");
   }
 
   onInputChange(event) {
@@ -57,16 +58,20 @@ export default class extends Controller {
     event.preventDefault();
     this.selectionViewTarget.classList.add('d-none');
     this.cameraViewTarget.classList.remove('d-none');
+    this.backButtonCaptureTarget.classList.remove("d-none");
   }
 
   resetUpload() {
     this.selectionViewTarget.classList.remove('d-none');
     this.uploadViewTarget.classList.add('d-none');
+    this.backButtonUploadTarget.classList.add("d-none");
   }
 
   resetCapture() {
     this.selectionViewTarget.classList.remove('d-none');
     this.cameraViewTarget.classList.add('d-none');
+    this.backButtonCaptureTarget.classList.add("d-none");
+
   }
 
   resetModal() {
