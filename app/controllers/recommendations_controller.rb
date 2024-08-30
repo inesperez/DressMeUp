@@ -17,6 +17,7 @@ class RecommendationsController < ApplicationController
     client = OpenAI::Client.new
     chatgpt_response = client.chat(parameters: {
       model: "gpt-4o",
+      temperature: 0.5,
       messages: [
         {
           role: "user",
