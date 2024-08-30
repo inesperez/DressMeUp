@@ -36,7 +36,7 @@ class ProcessImageDescriptionJob < ApplicationJob
       - Do not include any other descriptions at this stage.
       - Ensure each output follows this format:
         garment_type: top or bottom
-        garment_description: [long detailed description including color, style, textile, pattern, occasion, and weather}
+        garment_description: [long detailed description including color, style, textile, pattern, occasion, and weather]
 
     Example Output
       garment_type: top

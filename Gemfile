@@ -5,6 +5,7 @@ ruby "3.1.2"
 gem "ruby-openai"
 gem "geocoder"
 gem 'httparty'
+gem 'mini_magick'
 
 gem "solid_queue"
 
