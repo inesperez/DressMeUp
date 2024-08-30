@@ -1,8 +1,29 @@
 require 'open-uri'
 require 'faker'
+require 'mini_magick'
 
 Garment.destroy_all
 User.destroy_all
+
+# Garment.create!(
+#   user: ines,
+#   image: "https://static.zara.net/assets/public/c5ad/e9e3/3b8f4b648c02/9b3e82c05a75/02142153441-e1/02142153441-e1.jpg?ts=1724325334014&w=750",
+#   ai_description: "garment_type: top, garment_description: Light blue, long-sleeved top with a draped, cowl neckline. Made from a soft, likely stretchable fabric, the top has a smooth, slightly shiny texture. The design is stylish and sophisticated, suitable for both casual and semi-formal occasions. Ideal for cooler weather due to its long sleeves and layered front, this top can be paired well with skirts or trousers."
+# )
+
+# Garment.create!(
+#   user: ines,
+#   image: "https://static.zara.net/assets/public/28a1/2541/4c384e229a35/56f69a7ff2f7/01131807644-e1/01131807644-e1.jpg?ts=1722936482233&w=396",
+#   ai_description: "garment_type: top, garment_description: Soft pink, sleeveless top featuring a draped cowl neckline. The fabric appears smooth and lightweight, likely a silky or satin material, giving it a luxurious and elegant feel. This top is suitable for warmer weather and ideal for both casual and semi-formal occasions, especially when paired with skirts or tailored trousers. Its design and color make it a versatile piece that can be dressed up or down depending on the occasion."
+# )
+
+# Garment.create!(
+#   user: ines,
+#   image: "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
+#   ai_description: "garment_type: top, garment_description: Black, sleeveless top with a tailored, structured design. The fabric appears to be a smooth, possibly woven material, with a slightly stiff texture that helps maintain the garment's shape. It features a minimalist style with clean lines, making it suitable for formal or professional settings. The top is versatile and can be worn in various weather conditions, though it is ideal for warmer weather or layered under a blazer or jacket for cooler conditions. The solid black color adds to its classic and sophisticated appeal."
+# )
+
+
 
 IMAGES = [
   # tops
@@ -31,10 +52,19 @@ ines = User.create!(
   location: "London, UK"
 )
 
-10.times do
+def crop_image(image_path)
+  image = MiniMagick::Image.open(image_path)
+  image.combine_options do |c|
+    c.trim
+    c.repage.+
+  end
+  image
+end
+
+5.times do
+  sleep 45
   image = URI.open(IMAGES.sample)
   garment = Garment.new(
-    ai_description: Faker::Marketing.buzzwords,
     user: ines
   )
   garment.photo.attach(io: image, filename: "image.png", content_type: "image/png")
