@@ -4,7 +4,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-
+  z-index: 100;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -13,4 +13,8 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+#camera-button:hover {
+ color: #347d56;
 }
