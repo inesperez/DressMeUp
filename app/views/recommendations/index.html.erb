@@ -1,9 +1,11 @@
-<h2> Recommendations </h2>
-
-<% @recommendations.each do |recommendation| %>
-  <div class="d-flex">
-    <p>Recommendation</p>
-      <%= cl_image_tag recommendation[0].photo.key, class: "image-show" %>
-      <%= cl_image_tag recommendation[1].photo.key, class: "image-show" %>
-  </div>
-<% end %>
+<div class="container">
+  <% @recommendations.each do |recommendation| %>
+    <div class="d-flex cards">
+      <div style="margin: auto; padding: auto;">
+        <h2> Your outfit for the day </h2>
+        <%= cl_image_tag recommendation[0].photo.key, class: "card-category height" %>
+        <%= cl_image_tag recommendation[1].photo.key, class: "card-category height" %>
+      </div>
+    </div>
+  <% end %>
+</div>
