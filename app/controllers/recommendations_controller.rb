@@ -35,12 +35,15 @@ class RecommendationsController < ApplicationController
 
           These are the descriptions of the user's clothes and their garment IDs: #{@garments}
 
-          Your task:
-          Match the clothes together based on their descriptions to create potential outfits that combine 2 garments,
-          a top and a bottom. Order them from the best-looking to the worst-looking outfit.
+          **Your task:**
+          1. Match the clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments**:
+            - **One top** (garment type: upper body garment)
+            - **One bottom** (garment type: lower body garment)
+          2. Order these outfits from the best-looking to the worst-looking.
+          3. **Do not include any outfits that do not follow these rules.**
 
-          Your output:
-          Output the ranked outfits **only** as a combination of garment IDs in **JSON format** called 'matches'
+          **Your output:**
+          - Output the ranked outfits **only** as a combination of garment IDs in **JSON format** called 'matches'
           which contains **only** the matched IDs in an array.
           Match my clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments:**
           - **One top** (garment type: upper body garment)
@@ -53,6 +56,7 @@ class RecommendationsController < ApplicationController
           - Ensure the JSON is syntactically correct and valid.
           - Do not include any other text, explanations, or descriptions—only the JSON object.
           - Double-check each combination to ensure it contains exactly one top (upper-body clothing) and one bottom (lower body clothing). Clothing can be reused in different combinations.
+          - **Failure to adhere to this format is not acceptable.**
           "
         }
       ]
@@ -62,8 +66,6 @@ class RecommendationsController < ApplicationController
     recommendation_ids = JSON.parse(response_json)["matches"]
     @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
 
-    # @recommendations = Recommendation.all
-    # ranked_outfits[0][:matching]%>
   end
 
   private
