@@ -3,8 +3,16 @@
     <div class="d-flex cards">
       <div style="margin: auto; padding: auto;">
         <h2> Your outfit for the day </h2>
-        <%= cl_image_tag recommendation[0].photo.key, class: "card-category height" %>
-        <%= cl_image_tag recommendation[1].photo.key, class: "card-category height" %>
+        <% if recommendation[0].photo.attached? %>
+          <%= cl_image_tag recommendation[0].photo.key, class: "card-category height" %>
+        <% else %>
+          <%= image_tag(recommendation[0].image_url) %>
+        <% end %>
+        <% if recommendation[1].photo.attached? %>
+          <%= cl_image_tag recommendation[1].photo.key, class:"card-category height" %>
+        <% else %>
+          <%= image_tag(recommendation[1].image_url) %>
+        <% end %>
       </div>
     </div>
   <% end %>
