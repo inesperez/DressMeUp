@@ -1,22 +1,23 @@
 <div data-controller="camera">
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon align-items-center">
-    <div class="container d-flex" style="width: 40%">
+  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon align-items-center">
+    <div class="container d-flex" style="width: 70%">
           <% if user_signed_in? %>
               <%= link_to garments_path do %>
-                  <i class="fa-solid fa-box-open"> </i>
+                  <%# <i class="fa-solid fa-box-open fa-2x"> </i> %>
+                  <%= image_tag "vector.png", alt:"hanger", style:"width: 50px; height: 30px;" %>
                 <% end %>
               <button data-action="click->camera#toggle" class="btn primary" id="camera-button">
-                <i class="fa-solid fa-camera"></i>
+                <i class="fa-solid fa-camera fa-3x"></i>
+                <%# <%= image_tag "camera.png", alt:"camera", style:"width: 50px; height: 40px;" %>
               </button>
               <%= link_to  recommendations_preferences_path  do %>
-                <i class="fa-regular fa-thumbs-up"></i>
+                <%# <i class="fa-regular fa-thumbs-up fa-2x"></i> %>
+                <%= image_tag "outfit.png", alt:"outfit", style:"width: 45px; height: 30px;" %>
               <% end %>
           <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>
           <% end %>
-  </div>
-
+    </div>
   <%= render "garments/form", garment: Garment.new %>
-
-</div>
+  </div>
 </div>

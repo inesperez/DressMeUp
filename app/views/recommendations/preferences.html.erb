@@ -1,8 +1,14 @@
-<div class="container mt-3 mb-3 text-center" style="margin-left: 50px;">
-<p>At the moment there is <%= @weather_summary %> and <%= @current_temp  %> degrees in <%= @location  %>  </p>
-<p> Max. temperature today will be <%= @max_temp %> degrees</p>
+<div>
+<div class="weather-container mt-3 mb-3 d-flex">
+<%= image_tag 'weather.png', alt: "image of clouds", class: "weather-card" %>
+<div>
+<p class="weather-font">At the moment there is <strong><%= @weather_summary %></strong> and <strong><%= @current_temp %></strong> degrees in <strong><%= @location %></strong>.</p>
+<p class="weather-font weather-font-color">Max. temperature today will be <%= @max_temp %>  degrees.</p>
+</div>
+</div>
+<div class="preferences-form text-center">
   <h1>Your Preferences</h1>
-  <h4 style="margin-bottom: 20px;">Please select your choices</h4>
+  <p style="margin-bottom: 20px;">Please select your choices</p>
   <div class="field" data-controller = "preferences">
   <%= @garment %>
     <%= form_with url: recommendations_path, method: :get, local: true do |form| %>
@@ -10,34 +16,45 @@
             <%# <div> %>
             <%# <%= form.text_field :location %>
             <%# </div>  %>
-          <%= form.label :occasion, "What's the occasion? (optional)" %>
+          <%= form.label :occasion, "What's the occasion? (optional)", style: "margin-bottom: 20px" %>
             <div>
               <div>
                 <div>
                   <%= form.select :occasion, options_for_select(
-                    [["", ""],["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other (please specify)", "other"]],
-                    params[:occasion]
-                  ),
-                    input_html:  {  data: { preferences_target: "occasion", action: "change->preferences#fire" } }
+                    [["", ""],["Work", "work"], ["Casual wear", "casual wear"], ["Festive", "festive"], ["Other (please specify)", "other"]],
+                 params[:occasion]
+                  ), {}, data: { preferences_target: "occasion", action: "change->preferences#fire" }
                   %>
                 </div>
               </div>
               </div>
-          <div data-preferences-target="customOccasion"  style="margin-top: 20px;">
-            <%= form.label :custom_occasion, "Specify the occasion (optional)" %>
+             <div data-preferences-target="customOccasion" class="d-none" style="margin-top: 20px">
+               <%= form.label :custom_occasion, "Specify the occasion", style: "margin-bottom: 20px" %>
+               <div>
+                 <%= form.text_field :custom_occasion, placeholder: "e.g. dinner", class: "input" %>
+              </div>
+             </div>
+          <div style="margin-top: 20px;">
+            <%= form.label :feeling, "How are you feeling today? (optional)", style: "margin-bottom: 20px" %>
             <div>
-            <%= form.text_field :custom_occasion, placeholder: "Specify the occasion", class: "input" %>
+            <%= form.text_field :feeling, placeholder: "e.g. happy, sad, colorful", class: "input" %>
             </div>
           </div>
-      <div style="margin-top: 20px;">
-        <%= form.label :feeling, "How are you feeling today? (optional)" %>
-        <div>
-        <%= form.text_field :feeling, placeholder: "Happy, sad, colorful", class: "input" %>
-        </div>
-      </div>
-      <div class="actions">
-        <%= form.submit "Get Recommendations", class: 'btn secondary mt-4' %>
+      <div class="actions" >
+        <%= form.submit "Confirm", class: 'btn primary mt-4 preferences-button' %>
+        <%= form.submit "Skip", class: 'btn secondary mt-4 preferences-button' %>
       </div>
     <% end %>
   </div>
+</div>
+
+<div>
+  <% if @garment.present? %>
+    <% if @garment.photo.attached? %>
+      <%= cl_image_tag @garment.photo.key, class: "card-category" %>
+    <% else %>
+      <%= image_tag(@garment.image_url, class: "card-category") %>
+    <% end %>
+  <% end %>
+</div>
 </div>
