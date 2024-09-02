@@ -1,0 +1,13 @@
+<h2>This is your outfit of the day</h2>
+<div>
+  <% if @top.photo.attached? %>
+    <%= cl_image_tag @top.photo.key, class: "carousel-card" %>
+  <% else %>
+    <%= image_tag(@top.image_url, class: "carousel-card") %>
+  <% end %>
+  <% if @bottom.photo.attached? %>
+    <%= cl_image_tag @bottom.photo.key, class: "carousel-card" %>
+  <% else %>
+    <%= image_tag(@bottom.image_url, class: "carousel-card") %>
+  <% end %>
+</div>
