@@ -1,7 +1,10 @@
 <div>
-<div class="weather-container mt-3 mb-3 text-center">
-<p>Current weather in <%= @location  %>: <%= @weather_summary %> and <%= @current_temp  %> degrees. </p>
-<p> Max. temperature today will be <%= @max_temp %> degrees.</p>
+<div class="weather-container mt-3 mb-3 d-flex">
+<%= image_tag 'weather.png', alt: "image of clouds", class: "weather-card" %>
+<div>
+<p class="weather-font">At the moment there is <strong><%= @weather_summary %></strong> and <strong><%= @current_temp %></strong> degrees in <strong><%= @location %></strong>.</p>
+<p class="weather-font weather-font-color">Max. temperature today will be <%= @max_temp %>  degrees.</p>
+</div>
 </div>
 <div class="preferences-form text-center">
   <h1>Your Preferences</h1>
@@ -43,5 +46,14 @@
     <% end %>
   </div>
 </div>
+
+<div>
+  <% if @garment.present? %>
+    <% if @garment.photo.attached? %>
+      <%= cl_image_tag @garment.photo.key, class: "card-category" %>
+    <% else %>
+      <%= image_tag(@garment.image_url, class: "card-category") %>
+    <% end %>
+  <% end %>
 </div>
 </div>
