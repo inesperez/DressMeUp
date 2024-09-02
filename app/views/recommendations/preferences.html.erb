@@ -10,6 +10,7 @@
   <h1>Your Preferences</h1>
   <p style="margin-bottom: 20px;">Please select your choices</p>
   <div class="field" data-controller = "preferences">
+  <%= @garment %>
     <%= form_with url: recommendations_path, method: :get, local: true do |form| %>
           <%# <%= form.label :location, "What's your location?" %>
             <%# <div> %>
