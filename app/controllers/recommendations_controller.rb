@@ -3,6 +3,7 @@ class RecommendationsController < ApplicationController
   MAX_RETRIES = 3
 
   def preferences
+    @garment = Garment.find_by(id: params[:garment])
     @weather = get_weather
     @max_temp = get_temp_max
     @weather_summary = get_weather_summary
@@ -32,8 +33,7 @@ class RecommendationsController < ApplicationController
 
     response_json = "{ \"matches\": #{chatgpt_response_content} }"
     recommendation_ids = JSON.parse(response_json)["matches"]
-    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
-
+    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id) } }
   end
 
   def success

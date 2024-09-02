@@ -1,16 +1,31 @@
 <div class= "container my-2">
-  <div class= "cards row">
+  <div class= "cards row" data-controller="garment">
     <% @garments.each do |garment| %>
-      <%= link_to garment_path(garment), class: 'card-category' do %>
-        <div>
-          <%# <p>Hello 😁</p> %>
-        </div>
+      <div class="card-category">
         <% if garment.photo.attached? %>
-          <%=cl_image_tag garment.photo.key %>
+          <div data-action="click->garment#toggle" id="card-image" style="background-image: url(<%= cl_image_path garment.photo.key %>);">
+            <%= link_to 'I want to wear this', recommendations_preferences_path(garment: garment), class: "btn secondary d-none-after", data: {garment_target: "itemButton"} %>
+          </div>
+          <%#=cl_image_tag garment.photo.key %>
         <% else %>
-          <%= image_tag(garment.image_url) %>
+          <div data-action="click->garment#toggle" id='card-image' style="background-image: url(<%= image_path(garment.image_url) %>);">
+            <%= link_to 'I want to wear this', recommendations_preferences_path(garment: garment), class: "btn secondary d-none", data: {garment_target: "itemButton"} %>
+          </div>
+          <%#= image_tag(garment.image_url) %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+
+        <%# <%= link_to '#', data: { action: "click->garment#toggle"}, class: "btn primary" do%>
+        <%# <button data-garment-target= "itemButton" class="d-none">I want to wear this today</button> %>
+      <%# <%= link_to recommendations_preferences_path(garment: garment) do %>
+
+        <%# <div data-garment-target="garmentModal" class="choose-item">
+          <%= link_to "I want to wear this", recommendations_preferences_path, class: 'btn primary d-none choose-item'%>
+        <%# </div>  %>
