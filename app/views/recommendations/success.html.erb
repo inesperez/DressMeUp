@@ -1,13 +1,41 @@
-<h2>This is your outfit of the day</h2>
-<div>
+<h1 class="page-title">Congratulations 🎉</h1>
+
+<div class="page-container">
+<div class="title-container">
+  <h3>You're gonna look amazing 😍<h3>
+</div>
+
+<div class="outfit-container">
   <% if @top.photo.attached? %>
-    <%= cl_image_tag @top.photo.key, class: "carousel-card" %>
+    <div class="outfit-image-container">
+      <%= cl_image_tag @top.photo.key, class: "outfit-image" %>
+    </div>
   <% else %>
-    <%= image_tag(@top.image_url, class: "carousel-card") %>
+    <div class="outfit-image-container">
+      <%= image_tag(@top.image_url, class: "outfit-image") %>
+    </div>
   <% end %>
+
   <% if @bottom.photo.attached? %>
-    <%= cl_image_tag @bottom.photo.key, class: "carousel-card" %>
+    <div class="outfit-image-container" style="margin-top: 40px;">
+      <%= cl_image_tag @bottom.photo.key, class: "outfit-image" %>
+    </div>
   <% else %>
-    <%= image_tag(@bottom.image_url, class: "carousel-card") %>
+    <div class="outfit-image-container" style="margin-top: 40px;">
+      <%= image_tag(@bottom.image_url, class: "outfit-image") %>
+    </div>
   <% end %>
 </div>
+</div>
+
+<!-- Confetti.js for celebratory animation -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  });
+</script>
