@@ -18,8 +18,11 @@
 
   </head>
 
-  <body><%= render "shared/navbar" %>
-  <%= render "shared/flashes" %>
-    <%= yield %>
+  <body>
+    <% unless action_name == 'home' %>
+      <%= render "shared/navbar" %>
+      <% end %>
+      <%= render "shared/flashes" %>
+        <%= yield %>
   </body>
 </html>
