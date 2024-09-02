@@ -1,16 +1,18 @@
 <div data-controller="camera">
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon align-items-center">
-    <div class="container-fluid" style="width: 30%">
+    <div class="container d-flex" style="width: 40%">
           <% if user_signed_in? %>
               <%= link_to garments_path do %>
-                  <i class="fa-solid fa-box-open" style="color: #347d56;"></i>
+                  <i class="fa-solid fa-box-open"> </i>
                 <% end %>
-              <button data-action="click->camera#toggle" class="btn primary" id="camera-button"><i class="fa-solid fa-camera"></i></button>
-              <%= link_to  recommendations_preferences_path do %>
-                <i class="fa-regular fa-thumbs-up" style="color: #347d56;"></i>
+              <button data-action="click->camera#toggle" class="btn primary" id="camera-button">
+                <i class="fa-solid fa-camera"></i>
+              </button>
+              <%= link_to  recommendations_preferences_path  do %>
+                <i class="fa-regular fa-thumbs-up"></i>
               <% end %>
           <% else %>
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>
           <% end %>
   </div>
 
