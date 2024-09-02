@@ -1,4 +1,4 @@
-<h2>This is your outfit of the day</h2>
+<h2>🎉 This is your outfit of the day! 🎉</h2>
 <div>
   <% if @top.photo.attached? %>
     <%= cl_image_tag @top.photo.key, class: "carousel-card" %>
@@ -11,3 +11,16 @@
     <%= image_tag(@bottom.image_url, class: "carousel-card") %>
   <% end %>
 </div>
+
+
+<!-- Confetti.js for celebratory animation -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  });
+</script>
