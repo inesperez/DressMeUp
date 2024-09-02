@@ -15,7 +15,9 @@
               <% else %>
                 <%= image_tag(recommendation[1].image_url, class: "carousel-card") %>
               <% end %>
-            <%= link_to "Select outfit", recommendations_success_path( top: recommendation[0], bottom: recommendation[1] ), class: "btn primary d-flex justify-content-center align-items-center mt-3" %>
+              <div class="d-flex justify-content-center align-items-center">
+            <%= link_to "Select outfit", recommendations_success_path( top: recommendation[0], bottom: recommendation[1] ), class: "btn primary  mt-3" %>
+              </div>
             </div>
       <% end %>
     </div>
