@@ -19,7 +19,7 @@
       <%= simple_form_for garment do |f| %>
         <div>
           <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-          <%= f.input :photo, as: :file, input_html: { data: { action: 'change->camera#onInputChange'} } %>
+          <%= f.input :photo, as: :file, input_html: {data: { action: 'change->camera#onInputChange'} } %>
           <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none", data: { camera_target: "submitUploadButton" } %>
         </div>
       <% end %>
@@ -42,7 +42,7 @@
 
       <%= simple_form_for garment do |f| %>
         <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-        <%= f.input :photo, as: :file, input_html: { data: { camera_target: "cameraInput"} }, as: :hidden %>
+        <%= f.input :photo, as: :file, input_html: { style: 'display:none;',  data: { camera_target: "cameraInput"} }, label_html: {style: "display:none;"} %>
         <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none", data: { camera_target: "submitCameraButton" } %>
       <% end %>
     </div>

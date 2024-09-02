@@ -1,15 +1,17 @@
 <div class= "container my-2">
   <div class= "cards row">
     <% @garments.each do |garment| %>
-      <%= link_to garment_path(garment), class: 'card-category' do %>
-        <div>
-          <%# <p>Hello 😁</p> %>
-        </div>
+      <%= link_to recommendations_preferences_path(garment: garment) do %>
+      <div class="card-category">
         <% if garment.photo.attached? %>
           <%=cl_image_tag garment.photo.key %>
         <% else %>
           <%= image_tag(garment.image_url) %>
         <% end %>
+      </div>
+        <%# <div data-garment-target="garmentModal" class="choose-item">
+          <%= link_to "I want to wear this", recommendations_preferences_path, class: 'btn primary d-none choose-item'%>
+        <%# </div>  %>
       <% end %>
     <% end %>
   </div>

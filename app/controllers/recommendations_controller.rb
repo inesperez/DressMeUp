@@ -1,6 +1,7 @@
 class RecommendationsController < ApplicationController
 
   def preferences
+    @garment = Garment.find_by(id: params[:garment])
   end
 
   def index

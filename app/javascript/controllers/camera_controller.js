@@ -94,7 +94,7 @@ export default class extends Controller {
       this.canvasTarget.setAttribute("width", this.width);
       this.canvasTarget.setAttribute("height", this.height);
 
-      this.stremaing = true;
+      this.streaming = true;
     }
   }
 
@@ -132,10 +132,11 @@ export default class extends Controller {
         dataContainer.items.add(file);
 
         console.log({file})
+        // console.log(this.cameraInputTarget);
 
         this.cameraInputTarget.files = dataContainer.files;
         // @BEN unsure this is saving to the hidden input field
-
+        console.log(this.cameraInputTarget);
         const url = URL.createObjectURL(blob);
 
         this.previewTarget.setAttribute("src", url);
