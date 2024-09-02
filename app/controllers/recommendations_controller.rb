@@ -30,6 +30,11 @@ class RecommendationsController < ApplicationController
 
   end
 
+  def success
+    @top = Garment.find_by(id: params[:top])
+    @bottom = Garment.find_by(id: params[:bottom])
+  end
+
   private
 
   def get_chatgpt_response

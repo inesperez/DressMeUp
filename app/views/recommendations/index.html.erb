@@ -17,7 +17,7 @@
               <% else %>
                 <%= image_tag(recommendation[1].image_url, class: "carousel-card") %>
               <% end %>
-
+            <%= link_to "That's my outfit", recommendations_success_path( top: recommendation[0], bottom: recommendation[1] ), class: "btn primary" %>
             </div>
       <% end %>
     </div>
