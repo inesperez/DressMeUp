@@ -33,8 +33,7 @@ class RecommendationsController < ApplicationController
 
     response_json = "{ \"matches\": #{chatgpt_response_content} }"
     recommendation_ids = JSON.parse(response_json)["matches"]
-    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id)} }
-
+    @recommendations = recommendation_ids.map { |ids| ids.map { |garment_id| Garment.find(garment_id) } }
   end
 
   def success
