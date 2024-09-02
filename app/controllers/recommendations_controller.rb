@@ -1,6 +1,12 @@
 class RecommendationsController < ApplicationController
 
   def preferences
+    @weather = get_weather
+    @max_temp = get_temp_max
+    @weather_summary = get_weather_summary
+    @current_temp = get_current_temp
+    @user = current_user
+    @location = @user.location
   end
 
   def index
@@ -78,10 +84,28 @@ class RecommendationsController < ApplicationController
   def get_weather
     @user = current_user
     weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
-    weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
-    weather_temp = weather_service.current_weather(@user.location)["main"]["temp"]
-    return (weather_summary + " " + weather_temp.to_s)
+    @weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
+    @weather_temp = weather_service.current_weather(@user.location)["main"]["temp"]
+    return (@weather_summary + " " + @weather_temp.to_s)
     # weather_temp = (weather_service.current_weather(@user.location).main.temp + 273)
     # weather = (weather_summary + " " + weather_temp.to_s)
+  end
+
+  def get_weather_summary
+    @user = current_user
+    weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
+    @weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
+  end
+
+  def get_current_temp
+    @user = current_user
+    weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
+    @weather_temp = weather_service.current_weather(@user.location)["main"]["temp"].round()
+  end
+
+  def get_temp_max
+    @user = current_user
+    weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
+    temp_max = weather_service.current_weather(@user.location)["main"]["temp_max"].round()
   end
 end
