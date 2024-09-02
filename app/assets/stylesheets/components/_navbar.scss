@@ -1,9 +1,10 @@
 .navbar-lewagon {
-  justify-content: space-between;
+
   background: white;
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 10%;
   z-index: 100;
 }
 
@@ -15,6 +16,9 @@
   width: 40px;
 }
 
-#camera-button:hover {
- color: #347d56;
+#camera-button {
+  // background-color: white;
+  border: none;
+
+
 }
