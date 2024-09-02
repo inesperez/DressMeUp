@@ -9,10 +9,8 @@ export default class extends Controller {
   }
 
   fire(event) {
-
-    console.log(event)
     const selectedValue = this.occasionTarget.value;
-    if (selectedValue === "Other (please specify)") {
+    if (selectedValue === "other") {
       this.customOccasionTarget.classList.remove("d-none");
     }
   }

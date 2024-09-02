@@ -14,26 +14,25 @@
               <div>
                 <div>
                   <%= form.select :occasion, options_for_select(
-                    [["", ""],["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other (please specify)", "other"]],
-                    params[:occasion]
-                  ),
-                    input_html:  {  data: { preferences_target: "occasion", action: "change->preferences#fire" } }
+                 [["", ""],["Work", "work"], ["Festive", "festive"], ["Casual", "casual"], ["Other (please specify)", "other"]],
+                 params[:occasion]
+                  ), {}, data: { preferences_target: "occasion", action: "change->preferences#fire" }
                   %>
                 </div>
               </div>
               </div>
-          <div data-preferences-target="customOccasion"  style="margin-top: 20px;">
-            <%= form.label :custom_occasion, "Specify the occasion (optional)" %>
+             <div data-preferences-target="customOccasion" class="d-none" style="margin-top: 20px">
+               <%= form.label :custom_occasion, "Specify the occasion" %>
+               <div>
+                 <%= form.text_field :custom_occasion, placeholder: "e.g. dinner", class: "input" %>
+              </div>
+             </div>
+          <div style="margin-top: 20px;">
+            <%= form.label :feeling, "How are you feeling today? (optional)" %>
             <div>
-            <%= form.text_field :custom_occasion, placeholder: "Specify the occasion", class: "input" %>
+            <%= form.text_field :feeling, placeholder: "happy, sad, colorful", class: "input" %>
             </div>
           </div>
-      <div style="margin-top: 20px;">
-        <%= form.label :feeling, "How are you feeling today? (optional)" %>
-        <div>
-        <%= form.text_field :feeling, placeholder: "Happy, sad, colorful", class: "input" %>
-        </div>
-      </div>
       <div class="actions">
         <%= form.submit "Get Recommendations", class: 'btn secondary mt-4' %>
       </div>
