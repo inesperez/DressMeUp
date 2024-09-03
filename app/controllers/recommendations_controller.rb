@@ -1,11 +1,8 @@
 class RecommendationsController < ApplicationController
-
   MAX_RETRIES = 3
 
   def preferences
-    if params[:garment]
-      @garment = Garment.find_by(id: params[:garment])
-    end
+    @garment = Garment.find_by(id: params[:garment]) if params[:garment]
     @weather = get_weather
     @max_temp = get_temp_max
     @weather_summary = get_weather_summary
@@ -20,12 +17,9 @@ class RecommendationsController < ApplicationController
     @occasion = params[:occasion]
     @feeling = params[:feeling]
     @custom_occasion = params[:custom_occasion]
-
     @garments = Garment.all.map { |garment| "#{garment.ai_description} (#{garment.id})" }.join(" ")
-
     # Call the weather method to set @weather
     @weather = get_weather
-
     chatgpt_response_content = get_chatgpt_response
 
     if chatgpt_response_content.nil?
@@ -52,51 +46,98 @@ class RecommendationsController < ApplicationController
 
     while retries <= MAX_RETRIES
       begin
-        response = client.chat(parameters: {
-          model: "gpt-4o",
-          temperature: 0.5,
-          messages: [
-            {
-              role: "user",
-              content: "
-              Your role:
-              You are a fashion stylist who helps people decide what to wear.
-              You have access to a user's wardrobe and their preferences.
+        if @garment
+          response = client.chat(parameters: {
+            model: "gpt-4o",
+            temperature: 0.7,
+            messages: [
+              {
+                role: "user",
+                content: "
+                Your role:
+                You are a fashion stylist who helps people decide what to wear.
+                You have access to a user's wardrobe and their preferences.
 
-              Your inputs:
-              These are user preferences for the outfit recommendation (if user has no preferences, they are empty or nil):
-              Occasion: #{@occasion}
-              Custom Occasion: #{@custom_occasion}
-              Feeling: #{@feeling}
-              Weather: #{@weather}
+                Your inputs:
+                These are user preferences for the outfit recommendation (if user has no preferences, they are empty or nil):
+                Occasion: #{@occasion}
+                Custom Occasion: #{@custom_occasion}
+                Feeling: #{@feeling}
+                Weather: #{@weather}
 
-              These are the descriptions of the user's clothes and their garment IDs: #{@garments}
+                These are the descriptions of the user's clothes and their garment IDs: #{@garments}
+                The user has chosen the specific garment which has the id of: #{@garment.id}, and a description of: #{@garment.ai_description}.
 
-              **Your task:**
-              1. Match the clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments**:
-                - **One top** (garment type: upper body garment)
-                - **One bottom** (garment type: lower body garment)
-              2. Order these outfits from the best-looking to the worst-looking.
-              3. **Do not include any outfits that do not follow these rules.**
+                **Your task:**
+                1. Look at the #{@garment.ai_description} and identify the type of garment that the user has chosen, the options are either:
+                 - *top* (garment type: upper body garment)
+                 - *bottom* (garment type: lower body garment)
+                2. Match clothes of the *opposite type to that which the user has chosen*, based on their description, to create potential outfits that combine **exactly 2 garments**:
+                  - i.e. if the user has chosen a top, only match bottoms. If the user has chosen a bottom, only match tops.
+                3. Order these outfits from the best-looking to the worst-looking.
+                4. **Do not include any outfits that do not follow these rules.**
 
-              **Your output:**
-              - Output the ranked outfits **only** as a combination of garment IDs in an array
-              which contains **only** the matched IDs in an array.
-              Match my clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments:**
-              - **One top** (garment type: upper body garment)
-              - **One bottom** (garment type: lower body garment).
+                **Your output:**
+                - Each outfit must contain the #{@garment.id} the user has chosen and only one other garment.
+                - Output the ranked outfits **only** as a combination of garment IDs in an array
+                which contains **only** the matched IDs in an array.
 
-              Provide the ranked outfits only as an array of arrays, without any code block markers, labels, or extra formatting. It should be formatted as follows:
-              [ [top1, bottom1], [top2, bottom2], [top3, bottom3], [top4, bottom4], [top5, bottom5], ... ]
+                Provide the ranked outfits only as an array of arrays, without any code block markers, labels, or extra formatting. It should be formatted as follows:
+                [ [top1, bottom1], [top2, bottom2], [top3, bottom3], [top4, bottom4], [top5, bottom5], ... ]
 
-              - Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format.
-              - Do not include any other text, explanations, or descriptions, only the array of IDs.
-              - Double-check each combination to ensure it contains exactly one top (upper-body clothing) and one bottom (lower body clothing). Clothing can be reused in different combinations.
-              - **Failure to adhere to this format is not acceptable.**
-              "
-            }
-          ]
-        })
+                - Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format.
+                - Do not include any other text, explanations, or descriptions, only the array of IDs.
+                - Double-check each combination to ensure it contains exactly one top (upper-body clothing) and one bottom (lower body clothing). Clothing can be reused in different combinations.
+                - **Failure to adhere to this format is not acceptable.**
+                "
+              }
+            ]
+          })
+
+        else
+          response = client.chat(parameters: {
+            model: "gpt-4o",
+            temperature: 0.7,
+            messages: [
+              {
+                role: "user",
+                content: "
+                Your role:
+                You are a fashion stylist who helps people decide what to wear.
+                You have access to a user's wardrobe and their preferences.
+
+                Your inputs:
+                These are user preferences for the outfit recommendation (if user has no preferences, they are empty or nil):
+                Occasion: #{@occasion}
+                Custom Occasion: #{@custom_occasion}
+                Feeling: #{@feeling}
+                Weather: #{@weather}
+
+                These are the descriptions of the user's clothes and their garment IDs: #{@garments}
+
+                **Your task:**
+                1. Match the clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments**:
+                  - **One top** (garment type: upper body garment)
+                  - **One bottom** (garment type: lower body garment)
+                2. Order these outfits from the best-looking to the worst-looking.
+                3. **Do not include any outfits that do not follow these rules.**
+
+                **Your output:**
+                - Output the ranked outfits **only** as a combination of garment IDs in an array
+                which contains **only** the matched IDs in an array.
+
+                Provide the ranked outfits only as an array of arrays, without any code block markers, labels, or extra formatting. It should be formatted as follows:
+                [ [top1, bottom1], [top2, bottom2], [top3, bottom3], [top4, bottom4], [top5, bottom5], ... ]
+
+                - Replace 'top1', 'bottom1', etc., with the actual garment IDs in integer format.
+                - Do not include any other text, explanations, or descriptions, only the array of IDs.
+                - Double-check each combination to ensure it contains exactly one top (upper-body clothing) and one bottom (lower body clothing). Clothing can be reused in different combinations.
+                - **Failure to adhere to this format is not acceptable.**
+                "
+              }
+            ]
+          })
+        end
 
         if response.key?("error")
           retry_after = response["error"]["Retry-After"].to_i || 10
