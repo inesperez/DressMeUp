@@ -12,6 +12,8 @@ export default class extends Controller {
     const selectedValue = this.occasionTarget.value;
     if (selectedValue === "other") {
       this.customOccasionTarget.classList.remove("d-none");
+    } else {
+      this.customOccasionTarget.classList.add("d-none");
     }
   }
 }
