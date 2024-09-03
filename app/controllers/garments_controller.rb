@@ -16,10 +16,6 @@ class GarmentsController < ApplicationController
     end
   end
 
-  def show
-    @garment = Garment.find(params[:id])
-  end
-
   def edit
     @garment = Garment.find(params[:id])
   end
