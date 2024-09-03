@@ -1,4 +1,4 @@
-<h1 class="page-title">Congratulations 🎉</h1>
+<h1 class="page-title" id="success-page">Congratulations 🎉</h1>
 
 <div class="page-container">
 <div class="title-container">
@@ -31,14 +31,38 @@
   </div>
 </div>
 
+
 <!-- Confetti.js for celebratory animation -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    confetti({
-      particleCount: 200,
-      spread: 70,
-      origin: { y: 0.6 }
+    function launchConfetti() {
+      if (typeof confetti !== "undefined") {
+        confetti({
+          particleCount: 200,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } else {
+        console.error("Confetti library is not loaded.");
+      }
+    }
+
+    function shouldLaunchConfetti() {
+      // Check if the element with id 'success-page' is present
+      return document.getElementById('success-page') !== null;
+    }
+
+    // For initial page load
+    document.addEventListener('DOMContentLoaded', function () {
+      if (shouldLaunchConfetti()) {
+        launchConfetti();
+      }
     });
-  });
-</script>
+
+    // For Turbo page loads
+    document.addEventListener('turbo:load', function () {
+      if (shouldLaunchConfetti()) {
+        launchConfetti();
+      }
+    });
+  </script>
