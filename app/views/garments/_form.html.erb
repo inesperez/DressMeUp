@@ -17,10 +17,10 @@
 
     <div data-camera-target="uploadView" class="d-none upload-view">
       <%= simple_form_for garment do |f| %>
-        <div>
+        <div class="upload-form">
           <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
           <%= f.input :photo, as: :file, input_html: {data: { action: 'change->camera#onInputChange'} } %>
-          <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none", data: { camera_target: "submitUploadButton" } %>
+          <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary flex-grow-1 d-none", data: { camera_target: "submitUploadButton" } %>
         </div>
       <% end %>
     </div>
