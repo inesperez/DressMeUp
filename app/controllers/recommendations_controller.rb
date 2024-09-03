@@ -161,9 +161,9 @@ class RecommendationsController < ApplicationController
   def get_weather
     @user = current_user
     weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
-    @weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
-    @weather_temp = weather_service.current_weather(@user.location)["main"]["temp"]
-    return (@weather_summary + " " + @weather_temp.to_s)
+    weather_summary = weather_service.current_weather(@user.location)["weather"][0]["description"]
+    weather_temp = weather_service.current_weather(@user.location)["main"]["temp"]
+    return (weather_summary + " " + weather_temp.to_s)
     # weather_temp = (weather_service.current_weather(@user.location).main.temp + 273)
     # weather = (weather_summary + " " + weather_temp.to_s)
   end
