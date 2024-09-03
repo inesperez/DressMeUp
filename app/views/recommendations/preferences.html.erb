@@ -26,9 +26,9 @@
             <%# <div> %>
             <%# <%= form.text_field :location %>
             <%# </div>  %>
-      <%# <% if @garment %>
-        <%# <% form.text_field :garment, value: @garment.id%>
-      <%# <% end %>
+      <% if @garment %>
+        <%= form.text_field :garment, value: @garment.id , style: 'display:none;'%>
+       <% end %>
           <%= form.label :occasion, "What's the occasion?", style: "margin-bottom: 20px" %>
             <div>
               <div>
