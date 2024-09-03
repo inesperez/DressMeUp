@@ -3,7 +3,9 @@ class RecommendationsController < ApplicationController
   MAX_RETRIES = 3
 
   def preferences
-    @garment = Garment.find_by(id: params[:garment])
+    if params[:garment]
+      @garment = Garment.find_by(id: params[:garment])
+    end
     @weather = get_weather
     @max_temp = get_temp_max
     @weather_summary = get_weather_summary
@@ -14,6 +16,7 @@ class RecommendationsController < ApplicationController
 
   def index
     @user = current_user
+    @garment = Garment.find_by(id: params[:garment])
     @occasion = params[:occasion]
     @feeling = params[:feeling]
     @custom_occasion = params[:custom_occasion]
