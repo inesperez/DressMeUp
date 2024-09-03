@@ -1,11 +1,13 @@
 .form-upload {
+  margin-bottom: 16px;
   background-color: white;
-  height: 400px;
-  width: 300px;
+  height: 600px;
+  width: 350px;
   border-radius: 8px;
   position: fixed;
   bottom: 0;
   padding: 18px;
+  padding-bottom: 36px;
 
  button {
   right: 18px;
@@ -17,13 +19,14 @@
 .buttons-form{
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 16px;
   justify-content: end;
   height: 90%;
+  padding-bottom: 36px;
 
   img {
-    height: 40%;
-    width: 40%;
+    height: 150px;
+    width: 150px;
   }
 }
 
@@ -79,4 +82,10 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
 
+}
+
+.upload-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
