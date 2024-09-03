@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "recommendations", to: "recommendations#index"
   get "recommendations/success", to: "recommendations#success"
 
+  resources :questions, only: [:index, :create]
   # Defines the root path route ("/")
   # root "posts#index"
 end

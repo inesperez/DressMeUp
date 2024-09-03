@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :garments
   has_many :outfits
   has_many :recommendations, through: :garments
+  has_many :questions
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
