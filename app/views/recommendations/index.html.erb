@@ -5,6 +5,7 @@
     <div class="carousel-inner">
       <% @recommendations.each_with_index do |recommendation, index| %>
         <div class="carousel-item <%= 'active' if index == 0 %>">
+
               <% if recommendation[0].photo.attached? %>
                 <%= cl_image_tag recommendation[0].photo.key, class: "carousel-card" %>
               <% else %>
@@ -19,6 +20,7 @@
             <%= link_to "Select outfit", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-3" %>
               </div>
             </div>
+
       <% end %>
     </div>
 

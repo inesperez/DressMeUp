@@ -75,16 +75,6 @@
   padding: 8px;
 }
 
-.carousel-card {
-  display: block;
-  height: 310px;
-  width: 100dvw;
-  object-fit: cover;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 0px;
-  z-index: 1;
-}
 
 
 .choose-item{
@@ -105,7 +95,7 @@
 }
 
 .weather-font-color{
-  color: darkgray;
+  color: rgba(139,139,139,255);
 }
 /* Style for the page title */
 .page-title {
