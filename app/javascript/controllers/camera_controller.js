@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["pictureButton", "retakeButton", "video", "canvas", "preview", "cameraInput", "uploadInput",
                     "submitUploadButton","submitCameraButton", "addGarment", "selectionView", "uploadView", "cameraView",
-                  "backArrow", "uploadForm", "navbarToggle","backButtonCapture", "backButtonUpload"];
+                  "backArrow", "uploadForm", "navbarToggle","backButtonCapture", "backButtonUpload", "output"];
 
   connect() {
     this.width = 200;    // We will scale the photo width to this
@@ -106,6 +106,7 @@ export default class extends Controller {
     context.fillRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
 
     this.previewTarget.setAttribute("src", "");
+    this.outputTarget.remove();
 
     this.retakeButtonTarget.classList.add("d-none");
     this.pictureButtonTarget.classList.remove("d-none");
