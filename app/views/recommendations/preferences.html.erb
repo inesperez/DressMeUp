@@ -9,13 +9,25 @@
 <div class="preferences-form text-center">
   <h1>Your Preferences</h1>
   <p style="margin-bottom: 20px;">Please select your choices</p>
+    <div >
+      <% if @garment %>
+      <p>You've chosen to wear:</p>
+        <% if @garment.photo.attached? %>
+          <%= cl_image_tag @garment.photo.key, class: "card-category-recommendation"%>
+        <% else %>
+          <%= image_tag(@garment.image_url, class: "card-category-recommendation") %>
+        <% end %>
+      <% end %>
+    </div>
   <div class="field" data-controller = "preferences">
-  <%= @garment %>
     <%= form_with url: recommendations_path, method: :get, local: true do |form| %>
           <%# <%= form.label :location, "What's your location?" %>
             <%# <div> %>
             <%# <%= form.text_field :location %>
             <%# </div>  %>
+      <%# <% if @garment %>
+        <%# <% form.text_field :garment, value: @garment.id%>
+      <%# <% end %>
           <%= form.label :occasion, "What's the occasion? (optional)", style: "margin-bottom: 20px" %>
             <div>
               <div>
@@ -48,13 +60,4 @@
   </div>
 </div>
 
-<div>
-  <% if @garment.present? %>
-    <% if @garment.photo.attached? %>
-      <%= cl_image_tag @garment.photo.key, class: "card-category" %>
-    <% else %>
-      <%= image_tag(@garment.image_url, class: "card-category") %>
-    <% end %>
-  <% end %>
-</div>
 </div>

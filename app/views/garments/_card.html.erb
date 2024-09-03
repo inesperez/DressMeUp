@@ -4,12 +4,12 @@
       <div class="card-category">
         <% if garment.photo.attached? %>
           <div data-action="click->garment#toggle" id="card-image" style="background-image: url(<%= cl_image_path garment.photo.key %>);">
-            <%= link_to 'I want to wear this', recommendations_preferences_path(garment: garment), class: "btn secondary d-none-after", data: {garment_target: "itemButton"} %>
+            <%= link_to 'Wear this!', recommendations_preferences_path(garment: garment), class: "btn secondary d-none-after", data: {garment_target: "itemButton"} %>
           </div>
           <%#=cl_image_tag garment.photo.key %>
         <% else %>
           <div data-action="click->garment#toggle" id='card-image' style="background-image: url(<%= image_path(garment.image_url) %>);">
-            <%= link_to 'I want to wear this', recommendations_preferences_path(garment: garment), class: "btn secondary d-none", data: {garment_target: "itemButton"} %>
+            <%= link_to 'Wear this!', recommendations_preferences_path(garment: garment), class: "btn secondary d-none", data: {garment_target: "itemButton"} %>
           </div>
           <%#= image_tag(garment.image_url) %>
         <% end %>
