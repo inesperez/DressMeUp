@@ -1,0 +1,17 @@
+.carousel-inner{
+  width: 88%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carousel-card {
+  display: inline-block;
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 0px;
+  z-index: 1;
+  margin: 5px;
+}
