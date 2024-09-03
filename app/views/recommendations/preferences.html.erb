@@ -1,9 +1,11 @@
 <div>
+<div class="d-flex justify-content-center">
 <div class="weather-container mt-3 mb-3 d-flex">
 <%= image_tag 'weather.png', alt: "image of clouds", class: "weather-card" %>
 <div>
-<p class="weather-font">At the moment there is <strong><%= @weather_summary %></strong> and <strong><%= @current_temp %></strong> degrees in <strong><%= @location %></strong>.</p>
-<p class="weather-font weather-font-color">Max. temperature today will be <%= @max_temp %>  degrees.</p>
+<p class="weather-font my-0">At the moment there is <strong><%= @weather_summary %></strong> and <strong><%= @current_temp %></strong> degrees in <strong><%= @location %></strong>.</p>
+<p class="weather-font weather-font-color my-0">Max. temperature today will be <%= @max_temp %>  degrees.</p>
+</div>
 </div>
 </div>
 <div class="preferences-form text-center">
@@ -25,9 +27,9 @@
             <%# <div> %>
             <%# <%= form.text_field :location %>
             <%# </div>  %>
-      <%# <% if @garment %>
-        <%# <% form.text_field :garment, value: @garment.id%>
-      <%# <% end %>
+      <% if @garment %>
+        <%= form.text_field :garment, value: @garment.id , style: 'display:none;'%>
+       <% end %>
           <%= form.label :occasion, "What's the occasion? (optional)", style: "margin-bottom: 20px" %>
             <div>
               <div>
