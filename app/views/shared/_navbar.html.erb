@@ -3,15 +3,12 @@
     <div class="container d-flex" style="width: 70%">
           <% if user_signed_in? %>
               <%= link_to garments_path do %>
-                  <%# <i class="fa-solid fa-box-open fa-2x"> </i> %>
                   <%= image_tag "vector.png", alt:"hanger", style:"width: 50px; height: 30px;" %>
                 <% end %>
               <button data-action="click->camera#toggle" class="btn primary" id="camera-button">
-                <i class="fa-solid fa-camera fa-3x"></i>
-                <%# <%= image_tag "camera.png", alt:"camera", style:"width: 50px; height: 40px;" %>
+                <i class="fa-solid fa-camera fa-2x"></i>
               </button>
               <%= link_to  recommendations_preferences_path  do %>
-                <%# <i class="fa-regular fa-thumbs-up fa-2x"></i> %>
                 <%= image_tag "outfit.png", alt:"outfit", style:"width: 45px; height: 30px;" %>
               <% end %>
           <% else %>
