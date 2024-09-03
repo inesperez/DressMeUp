@@ -81,6 +81,8 @@ class RecommendationsController < ApplicationController
                 - Each outfit must contain the #{@garment.id} the user has chosen and only one other garment.
                 - Output the ranked outfits **only** as a combination of garment IDs in an array
                 which contains **only** the matched IDs in an array.
+                - Each combination of garments should only appear once. This means that each array in your output should contain a unique combination of garment IDs.
+
 
                 Provide the ranked outfits only as an array of arrays, without any code block markers, labels, or extra formatting. It should be formatted as follows:
                 [ [top1, bottom1], [top2, bottom2], [top3, bottom3], [top4, bottom4], [top5, bottom5], ... ]
@@ -125,6 +127,7 @@ class RecommendationsController < ApplicationController
                 **Your output:**
                 - Output the ranked outfits **only** as a combination of garment IDs in an array
                 which contains **only** the matched IDs in an array.
+                - The same garment can be used in multiple outfits, but each combination of garments should only appear once. This means that each array in your output should contain a unique combination of garment IDs.
 
                 Provide the ranked outfits only as an array of arrays, without any code block markers, labels, or extra formatting. It should be formatted as follows:
                 [ [top1, bottom1], [top2, bottom2], [top3, bottom3], [top4, bottom4], [top5, bottom5], ... ]
@@ -183,6 +186,6 @@ class RecommendationsController < ApplicationController
   def get_temp_max
     @user = current_user
     weather_service = WeatherService.new(ENV['OPENWEATHER_API_KEY'])
-    temp_max = weather_service.current_weather(@user.location)["main"]["temp_max"].round()
+    @temp_max = weather_service.current_weather(@user.location)["main"]["temp_max"].round()
   end
 end
