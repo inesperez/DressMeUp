@@ -14,7 +14,7 @@ export default class extends Controller {
     this.streaming = false;
 
     navigator.mediaDevices
-    .getUserMedia({ video: true, audio: false })
+    .getUserMedia({ video: { facingMode: { exact: "environment" } }, audio: false })
     .then((stream) => {
       this.videoTarget.srcObject = stream;
       this.videoTarget.play();
@@ -106,7 +106,7 @@ export default class extends Controller {
     context.fillRect(0, 0, this.canvasTarget.width, this.canvasTarget.height);
 
     this.previewTarget.setAttribute("src", "");
-    this.outputTarget.remove();
+    this.outputTarget.classList.add("opacity-0");
 
     this.retakeButtonTarget.classList.add("d-none");
     this.pictureButtonTarget.classList.remove("d-none");
@@ -141,6 +141,7 @@ export default class extends Controller {
         const url = URL.createObjectURL(blob);
 
         this.previewTarget.setAttribute("src", url);
+        this.outputTarget.classList.remove("opacity-0");
 
         this.pictureButtonTarget.classList.add("d-none");
         this.videoTarget.classList.add("d-none");
