@@ -102,6 +102,117 @@ Garment.create!(
   ai_description: "garment_type: bottom, garment_description: Dark indigo, wide-leg denim trousers. The fabric is traditional denim, offering durability and a slightly structured feel, typical of cotton denim material. The design features an elastic waistband with a drawstring for adjustable comfort, along with front pockets and subtle stitching details. The wide-leg silhouette gives these trousers a relaxed and casual vibe, making them suitable for everyday wear. The deep indigo color adds a classic touch, allowing these trousers to be versatile enough to pair with various tops. These trousers are ideal for casual occasions and can be worn in mild to warm weather, providing both style and comfort."
 )
 
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/1e6b/f544/d5444fddade6/8d3a37fd4d2c/04391892051-e1/04391892051-e1.jpg?ts=1724075841864&w=850",
+  ai_description: "garment_type: top,
+garment_description: Leopard-print quilted jacket with a beige and dark brown color scheme. The jacket features a V-neckline, long sleeves, and large front pockets. The textile appears to be a soft, padded material, making it suitable for cooler weather. This stylish and bold pattern is ideal for casual occasions, particularly in fall or winter."
+)
+
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/f05b/95d3/fc1d4f098750/dfe4ccdfd8c0/03920170481-e1/03920170481-e1.jpg?ts=1724325330114&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A black plain-knit mini skirt made from a soft, stretchy fabric. This skirt has a sleek, minimalist design without any visible patterns or embellishments. It features a high waist and a fitted silhouette, making it suitable for both casual and semi-formal occasions. Ideal for mild to warm weather, it can be paired with various tops and footwear to create different looks."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/9702/d2d1/0ddc4fd3beb1/4fc1a2ff2191/02731244805-e2/02731244805-e2.jpg?ts=1717662295818&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A cream voluminous midi skirt made from a lightweight, flowing fabric. This skirt features a high waist with a gathered design, creating a full, airy silhouette that falls below the knees. The skirt has a soft, elegant look without any patterns, making it versatile for both casual and dressier occasions. Suitable for warm to mild weather, it pairs well with fitted or tucked-in tops to balance its voluminous shape."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/89bb/24f2/3d694a5b9fa7/4b2b3c016b5c/04365290406-e1/04365290406-e1.jpg?ts=1723110820515&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A light blue denim mini skirt made from classic, durable denim fabric. This skirt features a fitted, straight silhouette with a high waist, creating a flattering, casual look. It has a slightly faded wash with minimal detailing, including subtle stitching and a raw hemline for a slightly distressed finish. This skirt is ideal for casual, everyday wear and is best suited for warm to mild weather. It pairs well with a variety of tops, from t-shirts to blouses, for versatile styling."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/93c3/5a0d/faa4493b92a5/4d3e1f45b8fa/04391522300-e1/04391522300-e1.jpg?ts=1723116054084&w=850",
+  ai_description: "garment_type: bottom
+garment_description: A beige midi skirt made from a smooth, structured fabric with a belt included. This skirt features a high waist and a sleek, A-line silhouette that falls just below the knees. It has a classic design with a front button closure and a matching belt that cinches the waist, adding a tailored touch. Suitable for both casual and more formal occasions, this skirt is ideal for mild to warm weather and pairs well with both fitted and loose tops."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/7baa/47a9/16f3493eb1b9/706be0780916/05247731064-e1/05247731064-e1.jpg?ts=1722422748312&w=850",
+  ai_description: "garment_type: top,
+garment_description: An oversized pinstripe blazer in a light cream color made from a structured, slightly textured fabric. This blazer features a relaxed, oversized fit with wide shoulders and a long, flowing silhouette that extends past the hips. It has classic design elements, including notched lapels, front flap pockets, and a single-breasted closure with buttons. The subtle pinstripe pattern adds a sophisticated touch. Suitable for both casual and business-casual occasions, it is ideal for cool to mild weather and pairs well with various bottoms for a polished look."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/2b98/b0a6/9a2444dba30f/4b15b7dc8a58/07223024427-e1/07223024427-e1.jpg?ts=1724080005107&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A pair of light blue mom-fit shorts made from classic denim fabric. These shorts feature a high waist and a relaxed, slightly tapered fit with a cuffed hem. They include traditional details such as front pockets, back pockets, and a button and zipper closure. The design offers a casual, vintage-inspired look with a slightly distressed finish. Suitable for warm weather, these shorts are ideal for everyday wear and pair well with a variety of tops for a laid-back, stylish outfit."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/dfc0/a6c9/8dba4efab534/14adc13e9ee1/08372253743-e1/08372253743-e1.jpg?ts=1724666306731&w=850",
+  ai_description: "garment_type: top,
+garment_description: A water-repellent quilted jacket in a green color made from a durable, insulated fabric. This jacket features a padded, quilted design that provides warmth and protection against light rain. It has a slightly tailored fit with a high collar, a front zip closure, and elasticized cuffs to keep out the cold. The jacket includes side pockets with zip closures for added convenience. Suitable for cool to mild weather, it is ideal for casual wear and outdoor activities, offering both functionality and style."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/651c/34fc/02d146b19c66/61efb1462894/04764120814-e1/04764120814-e1.jpg?ts=1724942581757&w=850",
+  ai_description: "garment_type: top,
+garment_description: A satin sleeveless top in a rlight beige color made from a smooth, luxurious fabric. This top features a relaxed, draped fit with a high neckline and no visible closures. The satin material gives it a lustrous finish and a sophisticated appearance. Ideal for dressier occasions, this top is suitable for mild to warm weather and can be styled with various bottoms for a chic, elegant look."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/ac12/eca2/bdd64d98a0f2/4ea18338334b/08000399431-e1/08000399431-e1.jpg?ts=1724416269607&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A satin midi skirt in a light blue color made from a smooth, lustrous fabric. This skirt features a high waist and a flowy, A-line silhouette that falls gracefully below the knees. The satin material provides a soft, elegant drape, ideal for adding a touch of sophistication to both casual and formal outfits. Suitable for mild to warm weather, this skirt pairs well with a variety of tops for versatile styling options."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/3276/4801/7753426198da/9aa7ea246d07/02893141802-e1/02893141802-e1.jpg?ts=1724341608191&w=850",
+  ai_description: "garment_type: top,
+garment_description: A 100% wool knit waistcoat in a classic light grey color. This waistcoat features a sleeveless design with a fitted silhouette and a V-neckline. It has a button-down front with a subtle ribbed texture, providing both warmth and a polished appearance. Ideal for layering in cooler weather, this waistcoat is versatile for smart-casual to formal occasions and can be paired with both shirts and blouses for a refined look."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/1bc8/a74c/9e1c4b0fa039/3759ff7ee11f/00761317306-e1/00761317306-e1.jpg?ts=1724080206011&w=850",
+  ai_description: "garment_type: top,
+garment_description: A yellow hoodie made from a soft, cotton-blend fabric. This hoodie features a relaxed fit with a drawstring-adjustable hood and a front kangaroo pocket. It has ribbed cuffs and hem for a snug fit and a comfortable, casual look. Ideal for cooler weather, this hoodie is perfect for everyday wear and pairs well with various bottoms for a laid-back, casual outfit."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/f1a4/f3f3/8a7b4223808a/ecc1bfb1e6ff/01026708818-e1/01026708818-e1.jpg?ts=1724756416497&w=850",
+  ai_description: "garment_type: top,
+garment_description: A black polyamide bodysuit with a square neckline. This bodysuit features a form-fitting design made from a stretchy, smooth fabric that offers a sleek, seamless look. It has a square cut at the neckline and adjustable snap closures at the bottom for convenience. Ideal for layering or wearing on its own, this bodysuit is suitable for both casual and semi-formal occasions, and can be paired with various bottoms for a streamlined, chic outfit."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/3199/b2b0/74c2496ea7ad/a2e8d23504a8/01067620507-e1/01067620507-e1.jpg?ts=1724325347177&w=850",
+  ai_description: "garment_type: top,
+garment_description: A brown crochet top made from intricately woven, openwork fabric. This top features a loose, relaxed fit with short, slightly puffed sleeves and a scoop neckline. The crochet pattern creates a delicate, textured look, adding a touch of bohemian flair. Ideal for warm weather, this top is perfect for casual outings and can be paired with various bottoms for a breezy, stylish outfit."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/7710/f1a7/22794387827f/6ad6a1e8cf10/03067004800-e1/03067004800-e1.jpg?ts=1722518581533&w=850",
+  ai_description: "garment_type: top,
+garment_description: A white halter top with a tie detail made from a lightweight, smooth fabric. This top features a halter neck with adjustable ties that fasten behind the neck, creating an open back design. The front has a fitted bodice with a slightly flared hem for a relaxed fit. The minimalist design with the tie detail adds a chic, elegant touch. Ideal for warm weather, this top is suitable for casual outings and can be paired with skirts or trousers for a sophisticated look."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/51f3/66fd/32214490bf05/3c60d48739f0/05427507979-e1/05427507979-e1.jpg?ts=1720090619512&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A satin midi skirt in a soft beige color made from a smooth, luxurious fabric. This skirt features a high waist and a flowing A-line silhouette that falls gracefully below the knees. The satin material provides a glossy, elegant finish, making it suitable for both casual and formal occasions. Ideal for mild to warm weather, this skirt pairs well with a variety of tops for a sophisticated, stylish outfit."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/9c15/6d96/519f436cb080/53c9988978e7/04764409753-e1/04764409753-e1.jpg?ts=1716282525167&w=850",
+  ai_description: "garment_type: bottom,
+garment_description: A long textured skirt in a deep brown color made from a woven, fabric with a subtle texture. This skirt features a high waist and a full, flowing silhouette that extends to the floor. The textured fabric adds visual interest and dimension, while the skirt's length and design make it suitable for both formal and semi-formal occasions. Ideal for mild to cooler weather, this skirt can be paired with various tops for an elegant, sophisticated look."
+)
+Garment.create!(
+  user: ines,
+  image_url: "https://static.zara.net/assets/public/29f9/0780/ebde46b8904c/87ea38c621cf/08372129403-e1/08372129403-e1.jpg?ts=1724079961509&w=850",
+  ai_description: "garment_type: top,
+garment_description: A pale blue 100% linen basic shirt made from a breathable, lightweight fabric. This shirt features a relaxed fit with a classic collar, a button-down front, and long sleeves with buttoned cuffs. The linen material provides a crisp, airy feel, making it suitable for warm weather. The minimalist design ensures versatility, allowing it to be worn casually or dressed up for more formal occasions. Ideal for hot weather, this shirt pairs well with a variety of bottoms for a clean, effortless look."
+)
+
+
 
 # IMAGES = [
 #   # tops - short
