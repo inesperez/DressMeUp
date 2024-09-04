@@ -2,7 +2,6 @@
 /* Style for the page title */
 .page-title {
   text-align: center; /* Center text horizontally */;
-  margin-top: 40px;
 }
 
 /* Container for the entire page content */
@@ -39,13 +38,14 @@
 
 .outfit-image {
   display: block;
-  height: 250px; /* Set to your desired height */
-  width: 80vw;
+  height: 300px; /* Set to your desired height */
+  width: auto;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 0px;
   z-index: 1;
+  margin: 5px;
 }
 
 /* Container for the button */
