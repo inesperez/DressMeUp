@@ -1,7 +1,10 @@
 <div data-controller="camera">
-  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon align-items-center">
-    <div class="container d-flex" style="width: 70%">
+  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon align-items-center ">
+    <div class="container d-flex justify-content-between align-items-center  " style="width: 90%">
           <% if user_signed_in? %>
+              <%= link_to questions_path do %>
+                <i class="fa-sharp-duotone fa-solid fa-comments fa-2x" style="--fa-primary-color: #347d56; --fa-secondary-color: #347d56;"></i>
+              <% end %>
               <%= link_to garments_path do %>
                   <%= image_tag "vector.png", alt:"hanger", style:"width: 50px; height: 30px;" %>
                 <% end %>
@@ -11,6 +14,7 @@
               <%= link_to  recommendations_preferences_path  do %>
                 <%= image_tag "outfit.png", alt:"outfit", style:"width: 45px; height: 30px;" %>
               <% end %>
+              <i class="fa-solid fa-user fa-2x"style="color: #347d56;"></i>
           <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>
           <% end %>
