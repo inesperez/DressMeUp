@@ -28,7 +28,7 @@
     <div data-camera-target="cameraView" class="d-none camera-view">
       <canvas id="canvas" data-camera-target="canvas" class="d-none"></canvas>
       <div class="output" data-camera-target="output">
-        <img id="photo" alt="The screen capture will appear in this box."
+        <img id="photo" alt=""
               data-camera-target="preview"/>
       </div>
 
@@ -38,6 +38,7 @@
               data-action="canplay->camera#resizeVideos">
         Video stream not available.
       </video>
+      <p class="align-text-center"><em>ensure the item is fully visible</em></p>
       <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture" class="btn primary">Take photo</button>
       <button class="d-none secondary" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
 
