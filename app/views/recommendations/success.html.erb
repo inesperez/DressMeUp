@@ -1,9 +1,10 @@
-<h1 class="page-title" id="success-page">Congratulations 🎉</h1>
+
+<h1 class="page-title" id="success-page">Let's get dressed 🎉</h1>
 
 <div class="page-container">
 <div class="title-container">
-  <h3>You're gonna look amazing 😍<h3>
-</div>
+  <h3>You're going to look amazing<h3>
+ </div>
 
 <div class="outfit-container">
   <% if @top.photo.attached? %>
@@ -17,17 +18,17 @@
   <% end %>
 
   <% if @bottom.photo.attached? %>
-    <div class="outfit-image-container" style="margin-top: 40px;">
+    <div class="outfit-image-container">
       <%= cl_image_tag @bottom.photo.key, class: "outfit-image" %>
     </div>
   <% else %>
-    <div class="outfit-image-container" style="margin-top: 40px;">
+    <div class="outfit-image-container">
       <%= image_tag(@bottom.image_url, class: "outfit-image") %>
     </div>
   <% end %>
 </div>
 <div class="button-container">
-    <%= link_to 'Back to my wardrobe', garments_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Back to my wardrobe', garments_path, class: 'btn secondary' %>
   </div>
 </div>
 

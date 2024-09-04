@@ -68,10 +68,13 @@
   height: 100%;
   border-radius: 8px;
   padding: 18px;
+  h2 {
+    margin-bottom: 16px;
+  }
 }
 
 .preferences-button{
-  margin: 20px;
+  margin-top: 80px;
 }
 
 .weather-container{
