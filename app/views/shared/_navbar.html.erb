@@ -1,12 +1,16 @@
 <div data-controller="camera">
-  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon align-items-center">
-    <div class="container d-flex" style="width: 90%">
+  <div class="navbar navbar-expand-lg navbar-light align-items-center">
+    <div class="container d-flex" style="width: 100%">
        <% if user_signed_in? %>
-              <%= link_to garments_path do %>
-                  <%= image_tag "vector.png", alt:"hanger", style:"width: 50px; height: 30px;" %>
-                <% end %>
         <div class="nav-item">
-          <i class="fa-solid fa-message"></i>
+          <%= link_to garments_path do %>
+             <%= image_tag "vector.png", alt:"hanger", style:"width: 45px; height: 30px;" %>
+          <% end %>
+        </div>
+        <div class="nav-item">
+        <%= link_to questions_path do %>
+          <%= image_tag "message.png", alt:"message", style:"width: 30px; height: 30px;" %>
+        <% end %>
         </div>
         <div class="nav-item camera-button">
           <div class="camera-icon-container">
@@ -17,11 +21,11 @@
         </div>
         <div class="nav-item">
           <%= link_to  recommendations_preferences_path  do %>
-                <%= image_tag "outfit.png", alt:"outfit", style:"width: 45px; height: 30px;" %>
+                <%= image_tag "outfit.png", alt:"outfit", style:"width: 40px; height: 30px;" %>
               <% end %>
         </div>
         <div class="nav-item">
-         <i class="fa-regular fa-user"></i>
+        <%= image_tag "profile.png", alt:"profile", style:"width: 30px; height: 30px;" %>
         </div>
         <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>

@@ -1,31 +1,9 @@
-// .navbar-lewagon {
-//   background: white;
-//   position: fixed;
-//   bottom: 0;
-//   width: 100%;
-//   z-index: 100;
-//   border-top-left-radius: 16px;
-//   border-top-right-radius: 16px;
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
-
-// #camera-button {
-//   border: none;
-// }
-
 .navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: white;
-  padding: 10px 0;
+  // padding: 10px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -43,7 +21,7 @@
 
 .camera-button {
   position: relative;
-  top: -30px; /* Lift the central button */
+  top: 0px; /* Lift the central button */
   z-index: 2;
 }
 
