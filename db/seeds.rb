@@ -191,7 +191,7 @@ Garment.create!(
   user: ines,
   image_url: "https://static.zara.net/assets/public/7710/f1a7/22794387827f/6ad6a1e8cf10/03067004800-e1/03067004800-e1.jpg?ts=1722518581533&w=850",
   ai_description: "garment_type: top,
-garment_description: A black halter top with a tie detail made from a lightweight, smooth fabric. This top features a halter neck with adjustable ties that fasten behind the neck, creating an open back design. The front has a fitted bodice with a slightly flared hem for a relaxed fit. The minimalist design with the tie detail adds a chic, elegant touch. Ideal for warm weather, this top is suitable for casual outings and can be paired with skirts or trousers for a sophisticated look."
+garment_description: A black halter top with a tie detail made from a lightweight, smooth fabric. This top features a halter neck with adjustable ties that fasten behind the neck, creating an open back design. The front has a fitted bodice with a slightly flared hem for a relaxed fit. The minimalist design with the tie detail adds a chic, elegant touch. Ideal for warm weather."
 )
 Garment.create!(
   user: ines,
