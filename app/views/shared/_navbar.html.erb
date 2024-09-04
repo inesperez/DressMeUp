@@ -1,20 +1,36 @@
 <div data-controller="camera">
-  <div class="navbar navbar-expand-lg navbar-light navbar-lewagon align-items-center">
-    <div class="container d-flex" style="width: 70%">
-          <% if user_signed_in? %>
-              <%= link_to garments_path do %>
-                  <%= image_tag "vector.png", alt:"hanger", style:"width: 50px; height: 30px;" %>
-                <% end %>
-              <button data-action="click->camera#toggle" class="btn primary" id="camera-button">
-                <i class="fa-solid fa-camera fa-2x"></i>
-              </button>
-              <%= link_to  recommendations_preferences_path  do %>
-                <%= image_tag "outfit.png", alt:"outfit", style:"width: 45px; height: 30px;" %>
+  <div class="navbar navbar-expand-lg navbar-light align-items-center">
+    <div class="container d-flex" style="width: 100%">
+       <% if user_signed_in? %>
+        <div class="nav-item">
+          <%= link_to garments_path do %>
+             <%= image_tag "vector.png", alt:"hanger", style:"width: 45px; height: 30px;" %>
+          <% end %>
+        </div>
+        <div class="nav-item">
+        <%= link_to questions_path do %>
+          <%= image_tag "message.png", alt:"message", style:"width: 30px; height: 30px;" %>
+        <% end %>
+        </div>
+        <div class="nav-item camera-button">
+          <div class="camera-icon-container">
+            <button data-action="click->camera#toggle" class="btn primary" id="camera-button">
+              <i class="fa-solid fa-camera fa-2x"></i>
+            </button>
+          </div>
+        </div>
+        <div class="nav-item">
+          <%= link_to  recommendations_preferences_path  do %>
+                <%= image_tag "outfit.png", alt:"outfit", style:"width: 40px; height: 30px;" %>
               <% end %>
-          <% else %>
+        </div>
+        <div class="nav-item">
+        <%= image_tag "profile.png", alt:"profile", style:"width: 30px; height: 30px;" %>
+        </div>
+        <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>
           <% end %>
     </div>
-  <%= render "garments/form", garment: Garment.new %>
+    <%= render "garments/form", garment: Garment.new %>
   </div>
 </div>

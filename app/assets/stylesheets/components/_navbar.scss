@@ -1,19 +1,30 @@
-.navbar-lewagon {
-  background: white;
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
   position: fixed;
   bottom: 0;
   width: 100%;
   z-index: 100;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+.nav-item {
+  text-align: center;
+  flex: 1;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.camera-button {
+  position: relative;
+  top: 0px;
+  z-index: 2;
 }
 
-#camera-button {
-  border: none;
+.camera-icon-container {
+  background-color: #397F4D;
+  border-radius: 50%;
+  padding: 8px;
 }

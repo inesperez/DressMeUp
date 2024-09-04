@@ -1,5 +1,11 @@
-
- <div class="container">
-  <h1 class="mt-5 mb-3" style="text-align:center;">My wardrobe </h1>
-  <%= render "garments/card", garment: @garment %>
+<div class="top-navbar">
+  <div>
+    <span style="font-family:Bangers; font-size: 24px;"> DressMeUp</span>
+  </div>
+  <div>
+    <span style="font-size: 18px;">My wardrobe</span>
+  </div>
 </div>
+  <div class="container">
+    <%= render "garments/card", garment: @garment %>
+  </div>
