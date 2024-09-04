@@ -12,7 +12,7 @@
       <%= image_tag "upload_image.png", class: "mx-auto d-block", style: "width: 150px;" %>
       <p>Choose how you would like to upload your images</p>
       <%= link_to "Choose from gallery", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showUploadView" } %>
-      <%= link_to "Take picture ", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showCameraView" } %>
+      <%= link_to "Take a picture ", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showCameraView" } %>
     </div>
 
     <div data-camera-target="uploadView" class="d-none upload-view">
@@ -28,7 +28,7 @@
     <div data-camera-target="cameraView" class="d-none camera-view">
       <canvas id="canvas" data-camera-target="canvas" class="d-none"></canvas>
       <div class="output" data-camera-target="output">
-        <img id="photo" alt="The screen capture will appear in this box."
+        <img id="photo" alt=""
               data-camera-target="preview"/>
       </div>
 
@@ -38,6 +38,7 @@
               data-action="canplay->camera#resizeVideos">
         Video stream not available.
       </video>
+      <p class="align-text-center"><em>ensure the item is fully visible</em></p>
       <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture" class="btn primary">Take photo</button>
       <button class="d-none secondary" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
 
