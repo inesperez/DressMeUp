@@ -2,10 +2,11 @@ class ChatbotJob < ApplicationJob
   queue_as :default
 
   def perform(question)
+    @garments = Garment.all.map { |garment| "#{garment.ai_description} (#{garment.id})" }.join(" ")
     @question = question
     chatgpt_response = client.chat(
       parameters: {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
         messages: questions_formatted_for_openai
       }
     )
@@ -25,9 +26,16 @@ class ChatbotJob < ApplicationJob
   end
 
   def questions_formatted_for_openai
+    @garments = Garment.all.map { |garment| "#{garment.ai_description} (#{garment.id})" }.join(" ")
     questions = @question.user.questions
     results = []
-    results << { role: "system", content: "You are a style assistant specializing in clothing." }
+    results << {
+      role: "system",
+      content:
+      "You are a style assistant specializing in clothing.
+       User's current wardrobe is described here: #{@garments}.
+       Make a recommendation based on the user's wardrobe and explain it in your answer.
+      " }
     questions.each do |question|
       results << { role: "user", content: question.user_question }
       results << { role: "assistant", content: question.ai_answer || "" }

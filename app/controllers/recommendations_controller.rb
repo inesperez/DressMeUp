@@ -118,11 +118,14 @@ class RecommendationsController < ApplicationController
                 These are the descriptions of the user's clothes and their garment IDs: #{@garments}
 
                 **Your task:**
-                1. Match the clothes together based on their descriptions to create potential outfits that combine **exactly 2 garments**:
-                  - **One top** (garment type: upper body garment)
-                  - **One bottom** (garment type: lower body garment)
-                2. Order these outfits from the best-looking to the worst-looking.
-                3. **Do not include any outfits that do not follow these rules.**
+                1. Look at the ai_description field and identify the garment type. The options are either:
+                 - *top* (garment type: upper body garment)
+                 - *bottom* (garment type: lower body garment)
+                2. Match the clothes together based on their descriptions to create potential outfits
+                that combine **exactly 2 garments**, **one top** and **one bottom**
+                    - **Important:** if a garment is a top, match it only with bottoms; if a garment is a bottom, match it only with tops. **Never match two tops together, and never match two bottoms together.**
+                3. After identifying valid combinations, rank these outfits from the best-looking to the worst-looking.
+                4. **Do not include any outfits that do not follow these rules.**
 
                 **Your output:**
                 - Output the ranked outfits **only** as a combination of garment IDs in an array
