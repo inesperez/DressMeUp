@@ -52,4 +52,17 @@
       margin-bottom: 0;
     }
   }
+
+  .ai-answer strong {
+    font-weight: bold;
+  }
+
+  .ai-answer ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+  .ai-answer li {
+    margin-bottom: 5px;
+  }
 }

@@ -7,6 +7,8 @@ gem "geocoder"
 gem 'httparty'
 gem 'mini_magick'
 gem 'turbolinks', '~> 5'
+gem 'redcarpet'
+
 
 gem "solid_queue"
 gem 'faraday', '~> 2.7', '>= 2.7.11'
