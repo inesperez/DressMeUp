@@ -25,7 +25,7 @@
   }
 
   .user-question, .ai-answer {
-    border-radius: 1rem;
+    border-radius: 16px;
     margin-bottom: 1rem;
     padding: 0.5rem;
     max-width: 70%;
@@ -35,8 +35,10 @@
 
   .user-question {
     align-self: flex-start;
-    background: $blue;
-    color: $light-gray;
+    background-color: white ;
+    color: #347D56 ;
+    border: 1px solid #347D56 ;
+    font-weight: 400;
   }
 
   .ai-answer {
@@ -47,6 +49,7 @@
   #new_question {
     border-top: 1px solid $gray-200;
     padding: 1rem;
+    padding-bottom: 40px;
 
     .form-group {
       margin-bottom: 0;
