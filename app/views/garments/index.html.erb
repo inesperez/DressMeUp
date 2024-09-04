@@ -1,17 +1,24 @@
 
- <div class="container">
-  <h1 class="mt-5 mb-3" style="text-align:center;">My wardrobe </h1>
-              <div class="row justify-content-center">
-              <div class="col-sm-8 my-3">
-                <%= form_with url: garments_path, method: :get, class: "d-flex" do %>
-                  <%= text_field_tag :query,
+
+<div class="top-navbar">
+  <div>
+    <span style="font-family:Bangers; font-size: 24px;"> DressMeUp</span>
+  </div>
+  <div>
+    <span style="font-size: 18px;">My wardrobe</span>
+  </div>
+</div>
+   <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-8 my-3">
+          <%= form_with url: garments_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
                         params[:query],
-                        class: "form-control",
+                        class: "form-control mx-1",
                         placeholder: "Type a keyword"
                     %>
-                  <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-                <% end %>
-              </div>
-            </div>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary m-1" %>
+          <% end %>
+        </div>
+      </div>
   <%= render "garments/card", garment: @garment %>
-</div>
