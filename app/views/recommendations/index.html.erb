@@ -1,5 +1,6 @@
 <div class="text-center m-3">
-<h2> Pick your outfit </h2>
+<h2> We think you'll love these:</h2>
+  <p class="text-secondary">swipe to explore more recommendations</p>
 </div>
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
@@ -17,7 +18,7 @@
                 <%= image_tag(recommendation[1].image_url, class: "carousel-card") %>
               <% end %>
               <div class="d-flex justify-content-center align-items-center">
-            <%= link_to "Select outfit", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-3" %>
+            <%= link_to "That's the one", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-3" %>
               </div>
             </div>
 

@@ -8,8 +8,8 @@
 </div>
 </div>
 </div>
-<div class="preferences-form text-center">
-  <h1>Any preferences?</h1>
+<div class="preferences-form text-center" style="height: 650px">
+  <h2 style="margin-bottom: 20px">Help us build your perfect outfit</h2>
     <div >
       <% if @garment %>
       <p>You've chosen to wear:</p>
@@ -29,7 +29,7 @@
       <% if @garment %>
         <%= form.text_field :garment, value: @garment.id , style: 'display:none;'%>
        <% end %>
-          <%= form.label :occasion, "What's the occasion?", style: "margin-bottom: 20px" %>
+          <%= form.label :occasion, "What's the occasion?", style: "margin-bottom: 10px" %>
             <div>
               <div>
                 <div>
@@ -42,15 +42,16 @@
               </div>
               </div>
              <div data-preferences-target="customOccasion" class="d-none" style="margin-top: 20px">
-               <%= form.label :custom_occasion, "Specify the occasion", style: "margin-bottom: 20px" %>
-               <div>
-                 <%= form.text_field :custom_occasion, placeholder: "e.g. dinner", class: "input" %>
+               <%= form.label :custom_occasion, "Specify the occasion", style: "margin-bottom: 10px" %>
+               <div class="d-flex justify-content-center">
+                 <%= form.text_field :custom_occasion, placeholder: "e.g. dinner", class: "input flex-grow-.7",  style: "width: 250px" %>
               </div>
              </div>
           <div style="margin-top: 20px;">
-            <%= form.label :feeling, "How are you feeling today?", style: "margin-bottom: 20px" %>
+            <%= form.label :feeling, "How are you feeling today?", style: "margin-bottom: 10px" %>
             <div>
-            <%= form.text_field :feeling, placeholder: "e.g. happy, sad, colorful", class: "input" %>
+            <%= form.text_field :feeling, placeholder: "e.g. happy, sad, colorful", class: "input",  style: "width: 250px
+    text-align: center" %>
             </div>
           </div>
       <div class="actions" >
