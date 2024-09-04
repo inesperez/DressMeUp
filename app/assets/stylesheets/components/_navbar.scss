@@ -26,5 +26,13 @@
 .camera-icon-container {
   background-color: #397F4D;
   border-radius: 50%;
-  padding: 8px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.camera-icon-button {
+  color: white
 }

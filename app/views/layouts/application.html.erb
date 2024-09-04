@@ -28,9 +28,11 @@
   <body>
     <% unless action_name == 'home' %>
       <%= render "shared/navbar" %>
-      <% end %>
-      <%= render "shared/flashes" %>
+    <% end %>
+    <%= render "shared/flashes" %>
+    <% unless action_name == 'home' %>
       <div class="main-container">
+    <% end %>
         <%= yield %>
       </div>
   </body>
