@@ -1,19 +1,55 @@
-.navbar-lewagon {
-  background: white;
+// .navbar-lewagon {
+//   background: white;
+//   position: fixed;
+//   bottom: 0;
+//   width: 100%;
+//   z-index: 100;
+//   border-top-left-radius: 16px;
+//   border-top-right-radius: 16px;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
+
+// #camera-button {
+//   border: none;
+// }
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 100;
+  z-index:100;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+/* Styling for each nav item */
+.nav-item {
+  text-align: center;
+  flex: 1;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.camera-button {
+  position: relative;
+  top: -30px; /* Lift the central button */
+  z-index: 2;
 }
 
-#camera-button {
-  border: none;
+.camera-icon-container {
+  background-color: #397F4D;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

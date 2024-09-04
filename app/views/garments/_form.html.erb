@@ -9,10 +9,10 @@
     </div>
 
     <div data-camera-target="selectionView" class="buttons-form">
-      <%= image_tag "upload_image.png", class: "mx-auto d-block", style: "width: 150px;" %>
+      <%= image_tag "upload_image.png", class: "mx-auto d-block", style: "width: 160px;" %>
       <p>Choose how you would like to upload your images</p>
-      <%= link_to "Choose from gallery", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showUploadView" } %>
-      <%= link_to "Take picture ", "#", :class => "btn btn-primary form-button", data: {action: "click->camera#showCameraView" } %>
+      <%= link_to "Choose from gallery", "#", :class => "btn secondary form-button", data: {action: "click->camera#showUploadView" } %>
+      <%= link_to "Take picture ", "#", :class => "btn primary form-button", data: {action: "click->camera#showCameraView" } %>
     </div>
 
     <div data-camera-target="uploadView" class="d-none upload-view">
