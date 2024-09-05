@@ -14,7 +14,7 @@ export default class extends Controller {
     this.streaming = false;
 
     navigator.mediaDevices
-    .getUserMedia({ video: { facingMode: { exact: "environment" } }, audio: false })
+    .getUserMedia({ video: true, audio: false })
     .then((stream) => {
       this.videoTarget.srcObject = stream;
       this.videoTarget.play();

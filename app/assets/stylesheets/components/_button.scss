@@ -27,4 +27,9 @@
 .preferences-button {
   display: inline-block; /* Ensure the button takes only the necessary width */
   margin: 0 auto; /* Center it inside the parent container */
+  width: 100%;
+}
+
+.wear-it-button{
+  width: 200px;
 }
