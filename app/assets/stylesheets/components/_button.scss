@@ -18,3 +18,13 @@
   background-color: #347D56;
   color: white
 }
+
+.pref-button {
+  margin-top: auto; /* Push the button to the bottom */
+  text-align: center;
+}
+
+.preferences-button {
+  display: inline-block; /* Ensure the button takes only the necessary width */
+  margin: 0 auto; /* Center it inside the parent container */
+}

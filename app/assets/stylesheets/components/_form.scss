@@ -88,3 +88,18 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.dropdown-select {
+  appearance: none;
+}
+
+.select-wrapper {
+  position: relative;
+}
+.select-wrapper::after {
+  content: "∨";
+  font-size: 1rem;
+  top: 25%;
+  right: 16px;
+  position: absolute;
+}
