@@ -82,4 +82,13 @@
   }
 
 
+  /* Ensure the button retains its primary styling during form submission */
+  #new-question-button:disabled {
+    background-color: #347D56; /* Primary button background color */
+    color: white; /* Primary button text color */
+    // border-color: #007bff; /* Primary button border color */
+    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+    opacity: 0.65; /* Optional: Adjust opacity to indicate the button is disabled */
+  }
+
 }

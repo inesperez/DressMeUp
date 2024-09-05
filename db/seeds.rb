@@ -3,7 +3,9 @@ require 'faker'
 require 'mini_magick'
 
 Garment.destroy_all
+Question.destroy_all
 User.destroy_all
+
 
 
 ines = User.create!(
