@@ -3,12 +3,11 @@
     <span style="font-family:Bangers; font-size: 24px;"> DressMeUp</span>
   </div>
   <div>
-    <span style="font-size: 18px;"> Outfit </span>
+    <span style="font-size: 18px;"> Recommended Outfits </span>
   </div>
 </div>
 
 <div class="text-center m-3">
-<p> We think you'll love these:</p>
 </div>
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
@@ -26,7 +25,7 @@
                 <%= image_tag(recommendation[1].image_url, class: "carousel-card") %>
               <% end %>
               <div class="d-flex justify-content-center align-items-center">
-            <%= link_to "That's the one", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-3" %>
+            <%= link_to "Wear it", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-2" %>
               </div>
             </div>
 
