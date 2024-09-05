@@ -8,7 +8,7 @@
           </div>
           <%#=cl_image_tag garment.photo.key %>
         <% else %>
-          <div data-action="click->garment#toggle" id='card-image' style="background-image: url(<%= garment.image_url %>);">
+          <div data-action="click->garment#toggle" id='card-image' style="background-image: url(<%= asset_path garment.image_url %>);">
             <%= link_to 'Style Me', recommendations_preferences_path(garment: garment), class: "btn secondary d-none", data: {garment_target: "itemButton"} %>
           </div>
           <%#= image_tag(garment.image_url) %>

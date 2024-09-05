@@ -216,14 +216,14 @@ garment_description: A pale blue 100% linen basic shirt made from a breathable, 
 
 Garment.create!(
   user: ines,
-  image_url: 'inesbottom.png',
+  image_url: 'jeans.jpg',
   ai_description: "garment_type: bottom,
   garment_description: blue denim trousers. very comfy."
 )
 
  Garment.create!(
   user: ines,
-  image_url: 'inestop.png',
+  image_url: 'beige_hoodie.jpg',
   ai_description: "garment_type: top,
   garment_description: beige hoodie. Should be matched with denim bottoms and then other bottoms."
 )

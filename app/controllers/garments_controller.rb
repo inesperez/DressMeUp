@@ -32,7 +32,7 @@ class GarmentsController < ApplicationController
   end
 
   def index
-    @garments = Garment.all
+    @garments = Garment.all.order(created_at: :desc)
   if params[:query].present?
     sql_subquery = <<~SQL
       garments.ai_description @@ :query
