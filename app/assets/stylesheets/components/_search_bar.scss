@@ -1,0 +1,22 @@
+.search-bar{
+  padding-top: 8px;
+}
+
+.search-input{
+  background-color: white;
+  margin-left: 4px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border: none !important;
+}
+
+.search-button{
+  background-color: #347D56;
+  margin-right: 4px;
+  color: white;
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}

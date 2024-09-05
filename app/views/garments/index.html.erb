@@ -8,16 +8,16 @@
     <span style="font-size: 18px;">My wardrobe</span>
   </div>
 </div>
-   <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-sm-8 my-3">
-          <%= form_with url: garments_path, method: :get, class: "d-flex" do %>
+   <div class="container-index">
+      <div class="justify-content-center" style="padding-left: 3px; padding-right: 4px">
+        <div class="col-sm-8">
+          <%= form_with url: garments_path, method: :get, class: "d-flex search-bar" do %>
             <%= text_field_tag :query,
                         params[:query],
-                        class: "form-control mx-1",
+                        class: "form-control search-input",
                         placeholder: "Type a keyword"
                     %>
-            <%= submit_tag "Search", name: "", class: "btn btn-primary m-1" %>
+            <%= submit_tag "Search", name: "", class: "search-button" %>
           <% end %>
         </div>
       </div>
