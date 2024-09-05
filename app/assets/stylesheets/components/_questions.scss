@@ -17,7 +17,7 @@
     height: 100%;
     overflow: scroll;
     padding: 1rem;
-    padding-bottom: 100px;
+    padding-bottom: 130px;
   }
 
   .question {
@@ -35,7 +35,7 @@
   }
 
   .user-question {
-    align-self: flex-start;
+    align-self: flex-end;
     background-color: white ;
     color: #347D56 ;
     border: 1px solid #347D56 ;
@@ -43,7 +43,7 @@
   }
 
   .ai-answer {
-    align-self: flex-end;
+    align-self: flex-start;
     background: $gray-200;
   }
 
