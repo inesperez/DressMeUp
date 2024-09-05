@@ -3,7 +3,9 @@ require 'faker'
 require 'mini_magick'
 
 Garment.destroy_all
+Question.destroy_all
 User.destroy_all
+
 
 
 ines = User.create!(
@@ -27,7 +29,7 @@ Garment.create!(
 Garment.create!(
   user: ines,
   image_url: "https://static.zara.net/assets/public/5103/ff5c/e94d4ec89c39/5019cc8038ed/04437230800-e1/04437230800-e1.jpg?ts=1723124994327&w=396",
-  ai_description: "garment_type: top, garment_description: Black, sleeveless top with a tailored, structured design. The fabric appears to be a smooth, possibly woven material, with a slightly stiff texture that helps maintain the garment's shape. It features a minimalist style with clean lines, making it suitable for formal or professional settings. The top is versatile and can be worn in various weather conditions, though it is ideal for warmer weather or layered under a blazer or jacket for cooler conditions. The solid black color adds to its classic and sophisticated appeal."
+  ai_description: "garment_type: top, garment_description: Black, sleeveless top with a tailored, structured design. The fabric appears to be a smooth, possibly woven material, with a slightly stiff texture that helps maintain the garment's shape. It features a minimalist style with clean lines, making it suitable for formal or professional settings. The top is versatile and can be worn in various weather conditions, though it is ideal for warmer weather. The solid black color adds to its classic and sophisticated appeal."
 )
 
 Garment.create!(
@@ -93,7 +95,7 @@ Garment.create!(
 Garment.create!(
   user: ines,
   image_url: "https://static.zara.net/assets/public/7f47/c252/abcc491ca1bb/cb1cfd8277fa/09929224800-e1/09929224800-e1.jpg?ts=1723020791628&w=396",
-  ai_description: "garment_type: bottom, garment_description: Black, wide-leg tailored trousers. The fabric appears to be a smooth, medium-weight material, likely a blend of polyester, wool, or similar fibers, providing a refined and structured feel. The design features a high waist with belt loops, a concealed front closure, and front pleats that enhance the wide-leg silhouette. These trousers have a sophisticated, flowing look that is both elegant and versatile, making them suitable for formal occasions or professional settings. The classic black color adds to their versatility, allowing them to be easily paired with various tops and blazers. Ideal for year-round wear, especially in professional or dressy environments."
+  ai_description: "garment_type: bottom, garment_description: Black, wide-leg tailored trousers. The fabric appears to be a smooth, medium-weight material, likely a blend of polyester, wool, or similar fibers, providing a refined and structured feel. The design features a high waist with belt loops, a concealed front closure, and front pleats that enhance the wide-leg silhouette. These trousers have a sophisticated, flowing look that is both elegant and versatile, making them suitable for formal occasions or professional settings. The classic black color adds to their versatility, allowing them to be easily paired with various tops. Ideal for year-round wear, especially in professional or dressy environments."
 )
 
 Garment.create!(
