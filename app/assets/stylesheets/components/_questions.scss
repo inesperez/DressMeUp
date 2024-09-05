@@ -75,7 +75,7 @@
     bottom: 70px; /* Adjust this value based on the height of your navbar */
     left: 0;
     right: 0;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 99; /* Ensure it appears above other elements */
     background-color: white; /* Optional: Set a background color */
     // padding: 10px; /* Optional: Add some padding */
     // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
