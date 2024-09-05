@@ -35,6 +35,9 @@ class ChatbotJob < ApplicationJob
       "You are a style assistant specializing in clothing.
        User's current wardrobe is described here: #{@garments}.
        Make a recommendation based on the user's wardrobe and explain it in your answer.
+       When recommending new clothes to buy, include links to the websites where the user can purchase them if possible. When doing so, preface it by writing 'Buy Here'.
+
+
       " }
     questions.each do |question|
       results << { role: "user", content: question.user_question }

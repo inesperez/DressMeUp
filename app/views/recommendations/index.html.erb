@@ -3,7 +3,7 @@
     <span style="font-family:Bangers; font-size: 24px;"> DressMeUp</span>
   </div>
   <div>
-    <span style="font-size: 18px;"> Recommended Outfits </span>
+    <span style="font-size: 18px;"> Outfit suggestions </span>
   </div>
 </div>
 
@@ -25,7 +25,7 @@
                 <%= image_tag(recommendation[1].image_url, class: "carousel-card") %>
               <% end %>
               <div class="d-flex justify-content-center align-items-center">
-            <%= link_to "Wear it", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-2" %>
+            <%= link_to "Wear Me", recommendations_success_path( top: recommendation[0], bottom: recommendation[1]), class: "btn primary  mt-2 wear-it-button" %>
               </div>
             </div>
 

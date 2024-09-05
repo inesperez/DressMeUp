@@ -1,13 +1,19 @@
 .main-container {
-  max-height: calc(100vh - 61.5px);
+  max-height: calc(100dvh - 76px);
   overflow-y: auto;
 }
 
-.pref-field{
-
-    min-height: 100dvw; /* Make sure the container fills the entire viewport */
+// .pref-field{
+.body{
+  background-color: #F5F5F5;
 }
+//   min-height: 100dvw; /* Make sure the container fills the entire viewport */
+// }
 
 .weather-container{
   width:93%;
 }
+
+.title-container{
+  color: #347D56;
+ }
