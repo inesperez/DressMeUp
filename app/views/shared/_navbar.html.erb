@@ -4,12 +4,12 @@
        <% if user_signed_in? %>
         <div class="nav-item">
           <%= link_to garments_path do %>
-             <%= image_tag "vector.png", alt:"hanger", style:"width: 45px; height: 30px;" %>
+             <%= image_tag "vector.png", alt:"hanger", style:"width: 36px; height: 27px;" %>
           <% end %>
         </div>
         <div class="nav-item">
         <%= link_to questions_path do %>
-          <%= image_tag "message.png", alt:"message", style:"width: 30px; height: 30px;" %>
+          <%= image_tag "message.png", alt:"message", style:"width: 36px; height: 39px;" %>
         <% end %>
         </div>
         <div class="nav-item camera-button d-flex justify-content-center align-items-center">
@@ -25,7 +25,7 @@
               <% end %>
         </div>
         <div class="nav-item">
-        <%= image_tag "profile.png", alt:"profile", style:"width: 30px; height: 30px;" %>
+        <%= image_tag "profile.png", alt:"profile", style:"width: 36px; height: 36px;" %>
         </div>
         <% else %>
               <%= link_to "Login", new_user_session_path, class: "nav-link d-none" %>
