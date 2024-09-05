@@ -33,6 +33,12 @@ class GarmentsController < ApplicationController
 
   def index
     @garments = Garment.all
+  if params[:query].present?
+    sql_subquery = <<~SQL
+      garments.ai_description @@ :query
+    SQL
+    @garments = @garments.where(sql_subquery, query: params[:query])
+  end
   end
 
   private
