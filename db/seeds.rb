@@ -101,7 +101,7 @@ Garment.create!(
 Garment.create!(
   user: ines,
   image_url: "https://static.zara.net/assets/public/d41f/786e/27414a0ea4e3/170babc9a3cc/05520221443-e1/05520221443-e1.jpg?ts=1720771680404&w=824",
-  ai_description: "garment_type: bottom, garment_description: Dark indigo, wide-leg denim trousers. The fabric is traditional denim, offering durability and a slightly structured feel, typical of cotton denim material. The design features an elastic waistband with a drawstring for adjustable comfort, along with front pockets and subtle stitching details. The wide-leg silhouette gives these trousers a relaxed and casual vibe, making them suitable for everyday wear. The deep indigo color adds a classic touch, allowing these trousers to be versatile enough to pair with various tops. These trousers are ideal for casual occasions and can be worn in mild to warm weather, providing both style and comfort."
+  ai_description: "garment_type: bottom, garment_description: Dark indigo, wide-leg denim trousers. The fabric is traditional denim, offering durability and a slightly structured feel, typical of cotton denim material. Very comfy. The design features an elastic waistband with a drawstring for adjustable comfort, along with front pockets and subtle stitching details. The wide-leg silhouette gives these trousers a relaxed and casual vibe, making them suitable for everyday wear. The deep indigo color adds a classic touch, allowing these trousers to be versatile enough to pair with various tops. These trousers are ideal for casual occasions and can be worn in mild to warm weather, providing both style and comfort."
 )
 
 Garment.create!(
@@ -214,7 +214,19 @@ Garment.create!(
 garment_description: A pale blue 100% linen basic shirt made from a breathable, lightweight fabric. This shirt features a relaxed fit with a classic collar, a button-down front, and long sleeves with buttoned cuffs. The linen material provides a crisp, airy feel, making it suitable for warm weather. The minimalist design ensures versatility, allowing it to be worn casually or dressed up for more formal occasions. Ideal for hot weather, this shirt pairs well with a variety of bottoms for a clean, effortless look."
 )
 
+Garment.create!(
+  user: ines,
+  image_url: 'inesbottom.png',
+  ai_description: "garment_type: bottom,
+  garment_description: blue denim trousers. very comfy."
+)
 
+ Garment.create!(
+  user: ines,
+  image_url: 'inestop.png',
+  ai_description: "garment_type: top,
+  garment_description: beige hoodie. Should be matched with denim bottoms and then other bottoms."
+)
 
 # IMAGES = [
 #   # tops - short
