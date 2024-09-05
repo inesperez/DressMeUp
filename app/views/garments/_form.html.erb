@@ -9,8 +9,8 @@
     </div>
 
     <div data-camera-target="selectionView" class="buttons-form">
-      <%= image_tag "upload_image.png", class: "mx-auto d-block", style: "width: 160px;" %>
-      <p>Choose how you would like to upload your images</p>
+      <%= image_tag "upload_image.png", class: "mx-auto d-block"%>
+      <p>Got a new item? Let's add it to your wardrobe!</p>
       <%= link_to "Choose from gallery", "#", :class => "btn secondary form-button", data: {action: "click->camera#showUploadView" } %>
       <%= link_to "Take picture ", "#", :class => "btn primary form-button", data: {action: "click->camera#showCameraView" } %>
     </div>
@@ -38,15 +38,18 @@
               data-action="canplay->camera#resizeVideos">
         Video stream not available.
       </video>
-      <p class="align-text-center"><em>ensure the item is fully visible</em></p>
-      <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture" class="btn primary">Take photo</button>
-      <button class="d-none secondary" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
+      <p class="align-text-center"><em>ensure the item is fully visible, for best results use a plain background</em></p>
+      <button id="startbutton" data-camera-target="pictureButton" data-action="click->camera#takePicture" class="btn primary" style="margin-bottom: 18px">Take photo</button>
+      <div>
+        <button class="d-none secondary" data-camera-target="retakeButton" data-action="click->camera#clearPicture">Retake</button>
 
-      <%= simple_form_for garment do |f| %>
-        <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
-        <%= f.input :photo, as: :file, input_html: { style: 'display:none;',  data: { camera_target: "cameraInput"} }, label_html: {style: "display:none;"} %>
-        <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none mx-auto d-block", data: { camera_target: "submitCameraButton" } %>
-      <% end %>
+        <%= simple_form_for garment do |f| %>
+          <%= f.input :ai_description, placeholder: 'AI Description', as: :hidden %>
+          <%= f.input :photo, as: :file, input_html: { style: 'display:none;',  data: { camera_target: "cameraInput"} }, label_html: {style: "display:none;"} %>
+          <%= f.button :submit, "Add to my Wardrobe", class: "btn btn-primary d-none d-block wardrobe-button-add", data: { camera_target: "submitCameraButton" } %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </div>
