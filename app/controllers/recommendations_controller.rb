@@ -49,7 +49,7 @@ class RecommendationsController < ApplicationController
         if @garment
           response = client.chat(parameters: {
             model: "gpt-4o",
-            temperature: 0.7,
+            temperature: 0.4,
             messages: [
               {
                 role: "user",
@@ -99,7 +99,7 @@ class RecommendationsController < ApplicationController
         else
           response = client.chat(parameters: {
             model: "gpt-4o",
-            temperature: 0.7,
+            temperature: 0.4,
             messages: [
               {
                 role: "user",

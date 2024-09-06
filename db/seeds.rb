@@ -218,14 +218,14 @@ Garment.create!(
   user: ines,
   image_url: 'jeans.jpg',
   ai_description: "garment_type: bottom,
-  garment_description: blue denim trousers. very comfy."
+  garment_description: Blue jeans. Very comfy. Matches beige tops very well."
 )
 
  Garment.create!(
   user: ines,
   image_url: 'beige_hoodie.jpg',
   ai_description: "garment_type: top,
-  garment_description: beige hoodie. Should be matched with denim bottoms and then other bottoms."
+  garment_description: Beige hoodie. It's ideally matched with blue jeans and similar bottoms."
 )
 
 # IMAGES = [
